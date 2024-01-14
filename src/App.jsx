@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Profile from "./components/Profile";
 import Outlet from "./components/Outlet";
 import IsPrivate from "./components/IsPrivate";
+import CreateToDo from "./components/CreateToDo";
 
 function App() {
   return (
