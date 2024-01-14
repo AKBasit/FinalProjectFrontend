@@ -1,4 +1,3 @@
-import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./components/Homepage";
 import Signup from "./components/Signup";
@@ -21,6 +20,7 @@ function App() {
           element={
             <IsPrivate>
               <Outlet>
+                <HomePage />
                 <Profile />
               </Outlet>
             </IsPrivate>
