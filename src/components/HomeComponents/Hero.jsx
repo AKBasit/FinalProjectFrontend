@@ -1,6 +1,9 @@
 import { useScroll, useTransform, motion } from "framer-motion";
 import { AiFillApple, AiFillFileImage } from "react-icons/ai";
 import { useRef } from "react";
+import outward from "../../../public/Outward.png";
+import mono from "../../../public/Mono.png";
+import { Link } from "react-router-dom";
 
 function Hero() {
   const targetRef = useRef(null);
@@ -18,10 +21,6 @@ function Hero() {
           <Circles />
         </div>
       </section>
-
-      <div className="h-screen bg-violet-600 text-white flex items-center justify-center">
-        <span>Other content here {":)"}</span>
-      </div>
     </div>
   );
 }
@@ -67,20 +66,17 @@ function Copy({ scrollYProgress }) {
       }}
       className="absolute px-8 w-full h-screen z-20 flex flex-col items-center justify-center"
     >
-      <h1 className="text-stone-950 text-5xl md:text-7xl font-bold text-center max-w-xl">
+      <h1 className="text-stone-950 text-5xl md:text-[150px] font-bold text-center max-w-7xl">
         A creative tool for your mind
       </h1>
-      <p className="text-stone-600 text-sm md:text-base text-center max-w-xl my-6">
+      <p className="text-stone-600 text-md md:text-lg text-center max-w-xl my-6">
         Discover your unique identity with Creativehub—where we unleash your
         creativity through essential tools and unwavering support. Elevate your
         portfolio effortlessly!
       </p>
       <div className="flex items-center gap-4">
         <button className="px-4 py-2 bg-violet-600 hover:bg-violet-600 transition-colors text-white font-medium">
-          Try for free
-        </button>
-        <button className="px-4 py-2 bg-transparent hover:bg-stone-200 transition-colors text-stone-950 font-medium">
-          Learn about us
+          <Link to="/signup">Sign up for free</Link>
         </button>
       </div>
     </motion.div>
@@ -162,8 +158,7 @@ function Images({ scrollYProgress }) {
       <motion.div
         className="relative z-10"
         style={{
-          backgroundImage:
-            "url(https://uploads-ssl.webflow.com/63ad78b533698b4084d66910/63fa196eb898996a92bb4929_tn-type-vercetti.svg)",
+          backgroundImage: `url(${outward})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           scale,
@@ -174,8 +169,7 @@ function Images({ scrollYProgress }) {
       <motion.div
         className="relative z-10"
         style={{
-          backgroundImage:
-            "url(https://plus.unsplash.com/premium_photo-1668790459004-780996a6404c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80)",
+          backgroundImage: `url(${mono})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           scale,
@@ -191,6 +185,8 @@ function Circles() {
   return (
     <>
       <div className="w-3/5 max-w-[850px] min-w-[400px] aspect-square border-[8px] border-slate-200 rounded-full absolute z-0 left-0 top-0 -translate-x-[50%] -translate-y-[50%]" />
+      <div className="w-1/2 max-w-[200px] min-w-[100px] aspect-square border-[8px] border-slate-100 rounded-full absolute z-0 left-[620px] top-10 translate-x-[50%] translate-y-[50%]" />
+      <div className="w-1/2 max-w-[300px] min-w-[200px] aspect-square border-[8px] border-slate-100 rounded-full absolute z-0 right-80 top-20 translate-x-[50%] translate-y-[50%]" />
       <div className="w-1/2 max-w-[600px] min-w-[300px] aspect-square border-[8px] border-slate-200 rounded-full absolute z-0 right-0 bottom-0 translate-x-[50%] translate-y-[50%]" />
     </>
   );

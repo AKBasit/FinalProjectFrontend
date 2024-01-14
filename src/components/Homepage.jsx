@@ -7,8 +7,8 @@ import FontGallery from "./HomeComponents/FontGallery";
 function Homepage() {
   return (
     <div>
-      <Link to="/signup">Signup</Link>
-      <Link to="/login">Login</Link>
+      {/* <Link to="/signup">Signup</Link>
+      <Link to="/login">Login</Link> */}
       <Hero />
       <WebDesignGallery />
       <ImageGallery />
