@@ -7,13 +7,13 @@ export default function ToDoList() {
   const { toDos, setToDos, getTodos } = useContext(ToDoContext);
 
   const handleDone = (todoId) => {
-    const mappedTodos = todos.map((elem) => {
+    const mappedTodos = toDos.map((elem) => {
       if (elem.id === todoId) {
         elem.done = !elem.done;
       }
       return elem;
     });
-    setTodos(mappedTodos);
+    setToDos(mappedTodos);
   };
 
   const handleDelete = async (id) => {
