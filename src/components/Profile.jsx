@@ -7,9 +7,11 @@ export default function Profile() {
   const { user, handleLogout } = useContext(UserContext);
   return (
     <div>
-      <p>Welcome!</p>
-      <h1>{user && user.username}'s Profile</h1>
+      <h1>
+        Welcome to your profile <span>{user && user.username}</span>
+      </h1>
       <Link to="/createTodo">Create To-Do</Link>
+      <br></br>
       <button onClick={handleLogout}>Logout</button>
       <h2>Things to do!</h2>
       <ToDoList />

@@ -20,7 +20,6 @@ function App() {
           element={
             <IsPrivate>
               <Outlet>
-                <HomePage />
                 <Profile />
               </Outlet>
             </IsPrivate>
