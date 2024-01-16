@@ -1,6 +1,10 @@
 import React from "react";
+import { motion } from "framer-motion";
+import simpleParallax from "simple-parallax-js";
 
 export default function WebDesignGallery() {
+  const images = document.querySelectorAll("image");
+  new simpleParallax(images);
   return (
     <div className="flex items-center justify-center h-90vh px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8 lg:py-20">
       <div className="grid gap-10 lg:grid-cols-2">
@@ -35,7 +39,7 @@ export default function WebDesignGallery() {
           <img
             className="object-cover w-full h-56 rounded shadow-lg sm:h-96"
             src="https://minimal.gallery/wp-content/uploads/2023/07/Screenshot-2023-07-10-at-22.52.35-900x490.png"
-            alt=""
+            alt="image"
           />
         </div>
       </div>
