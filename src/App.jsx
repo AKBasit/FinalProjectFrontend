@@ -5,7 +5,8 @@ import Login from "./components/Login";
 import Profile from "./components/Profile";
 import Outlet from "./components/Outlet";
 import IsPrivate from "./components/IsPrivate";
-import CreateToDo from "./components/CreateToDo";
+import CreateWebDesigns from "./components/CreateWebDesigns";
+import CreateFonts from "./components/CreateFonts";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/createCreation" element={<CreateToDo />} />
+        <Route path="/createWebdesigns" element={<CreateWebDesigns />} />
+        <Route path="/createFonts" element={<CreateFonts />} />
         <Route
           path="/profile"
           element={
