@@ -7,7 +7,20 @@ const BASE_TRANSITION = {
 
 export default function CreateGeneral() {
   const [selected, setSelected] = useState("webDesign");
+  const [image, setImage] = useState("");
 
+  function convertToBase64(e) {
+    console.log(e);
+    const reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      console.log(reader.result);
+      setImage(reader.result);
+    };
+    reader.onerror = (error) => {
+      console.log("Error: ", error);
+    };
+  }
   function Form({ selected, setSelected }) {
     return (
       <form
@@ -26,12 +39,15 @@ export default function CreateGeneral() {
           Add your own creative footprint
         </h3>
 
+        {/* ---------------------------------------------------------------------------------------------------------------- */}
+
         {/* font/individual toggle */}
         <div className="mb-6">
           <p className="text-2xl mb-2">and your components is a....</p>
           <FormSelect selected={selected} setSelected={setSelected} />
         </div>
 
+        {/* Web Design Section */}
         <AnimatePresence>
           {selected === "webDesign" && (
             <motion.div
@@ -58,11 +74,27 @@ export default function CreateGeneral() {
                   selected === "WebDesign" ? "bg-indigo-700" : "bg-violet-700"
                 } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
               />
+              <p className="text-2xl mb-2">Image:</p>
+              <input
+                type="text"
+                placeholder="Upload your image..."
+                className={`${
+                  selected === "WebDesign" ? "bg-indigo-700" : "bg-violet-700"
+                } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
+              />
+              <p className="text-2xl mb-2">Description:</p>
+              <input
+                type="text"
+                placeholder="Your description here..."
+                className={`${
+                  selected === "WebDesign" ? "bg-indigo-700" : "bg-violet-700"
+                } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
+              />
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* font name */}
+        {/* Font Section */}
         <AnimatePresence>
           {selected === "font" && (
             <motion.div
@@ -89,10 +121,27 @@ export default function CreateGeneral() {
                   selected === "font" ? "bg-indigo-700" : "bg-violet-700"
                 } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
               />
+              <p className="text-2xl mb-2">Image:</p>
+              <input
+                type="text"
+                placeholder="Upload your image here..."
+                className={`${
+                  selected === "font" ? "bg-indigo-700" : "bg-violet-700"
+                } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
+              />
+              <p className="text-2xl mb-2">License type:</p>
+              <input
+                type="text"
+                placeholder="Font license type here e.g. 'free'"
+                className={`${
+                  selected === "font" ? "bg-indigo-700" : "bg-violet-700"
+                } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
+              />
             </motion.div>
           )}
         </AnimatePresence>
 
+        {/* Image section */}
         <AnimatePresence>
           {selected === "image" && (
             <motion.div
@@ -119,11 +168,36 @@ export default function CreateGeneral() {
                   selected === "font" ? "bg-indigo-700" : "bg-pink-700"
                 } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
               />
+              <p className="text-2xl mb-2">Image:</p>
+              <div>
+                <input
+                  accept="image/*"
+                  type="file"
+                  placeholder="Upload your image here..."
+                  className={`${
+                    selected === "font" ? "bg-indigo-700" : "bg-pink-700"
+                  } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
+                  onChange={convertToBase64}
+                />
+                {image == "" || image == null ? (
+                  ""
+                ) : (
+                  <img width={100} height={100} src={image} />
+                )}
+              </div>
+              <p className="text-2xl mb-2">Contributor:</p>
+              <input
+                type="text"
+                placeholder="Your image contributor here..."
+                className={`${
+                  selected === "font" ? "bg-indigo-700" : "bg-pink-700"
+                } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
+              />
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* More info */}
+        {/* More info shared component*/}
         <div className="mb-6">
           <p className="text-2xl mb-2">More info on...</p>
           <textarea
@@ -161,6 +235,7 @@ export default function CreateGeneral() {
     );
   }
 
+  // Motion command handlers
   function FormSelect({ selected, setSelected }) {
     return (
       <div className="border-[1px] rounded border-white overflow-hidden font-medium w-fit">
