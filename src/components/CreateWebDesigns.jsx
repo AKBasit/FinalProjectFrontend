@@ -7,6 +7,7 @@ import axios from "axios";
 export default function CreateWebDesigns() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
@@ -39,6 +40,7 @@ export default function CreateWebDesigns() {
           }}
         />
       </label>
+
       <label>
         Web Design Description:
         <input
@@ -47,6 +49,18 @@ export default function CreateWebDesigns() {
           type="text"
           onChange={(e) => {
             setDescription(e.target.value);
+          }}
+        />
+      </label>
+
+      <label>
+        Web Design Image:
+        <input
+          name="image"
+          value={image}
+          type="file"
+          onChange={(e) => {
+            setImage(e.target.value);
           }}
         />
       </label>

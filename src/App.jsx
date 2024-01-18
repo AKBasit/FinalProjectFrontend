@@ -7,6 +7,7 @@ import Outlet from "./components/Outlet";
 import IsPrivate from "./components/IsPrivate";
 import CreateWebDesigns from "./components/CreateWebDesigns";
 import CreateFonts from "./components/CreateFonts";
+import CreateGeneral from "./components/CreateGeneral";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/createWebdesigns" element={<CreateWebDesigns />} />
         <Route path="/createFonts" element={<CreateFonts />} />
+        <Route path="/createGeneral" element={<CreateGeneral />} />
         <Route
           path="/profile"
           element={
