@@ -16,7 +16,7 @@ const WebDesignWrapper = ({ children }) => {
         },
       }
     );
-    console.log("response with all todos", data);
+    console.log("response with all web designs", data);
     setWebDesigns(data);
   };
 

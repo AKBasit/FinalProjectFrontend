@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { UserContext } from "../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const BASE_TRANSITION = {
   duration: 0.75,
@@ -8,6 +11,26 @@ const BASE_TRANSITION = {
 export default function CreateGeneral() {
   const [selected, setSelected] = useState("webDesign");
   const [image, setImage] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const navigate = useNavigate();
+  const { user } = useContext(UserContext);
+
+  const handleCreateWebDesign = async (e) => {
+    e.preventDefault();
+    console.log("user in create func", user);
+    const webDesignCreate = {
+      name: name,
+      description: description,
+      owner: user.id,
+    };
+    const { data } = await axios.post(
+      "http://localhost:5005/webdesigns/createWebdesign",
+      webDesignCreate
+    );
+    console.log("web design successfully created", data);
+    navigate("/profile");
+  };
 
   function convertToBase64(e) {
     console.log(e);
@@ -24,12 +47,14 @@ export default function CreateGeneral() {
   function Form({ selected, setSelected }) {
     return (
       <form
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={(e) => {
+          handleCreateWebDesign(e);
+        }}
         className={`p-8 w-full text-white transition-colors duration-[750ms] ${
           selected === "font"
             ? "bg-indigo-600"
             : selected === "image"
-            ? "bg-pink-600" // Add this line for the pink background
+            ? "bg-pink-600"
             : selected === "webDesign"
             ? "bg-violet-600"
             : ""
@@ -41,7 +66,7 @@ export default function CreateGeneral() {
 
         {/* ---------------------------------------------------------------------------------------------------------------- */}
 
-        {/* font/individual toggle */}
+        {/* toggle controller */}
         <div className="mb-6">
           <p className="text-2xl mb-2">and your components is a....</p>
           <FormSelect selected={selected} setSelected={setSelected} />
@@ -68,24 +93,36 @@ export default function CreateGeneral() {
             >
               <p className="text-2xl mb-2">Web Design name:</p>
               <input
+                name="name"
+                value={name}
                 type="text"
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
                 placeholder="Your Web Design name..."
                 className={`${
                   selected === "WebDesign" ? "bg-indigo-700" : "bg-violet-700"
                 } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
               />
+
               <p className="text-2xl mb-2">Image:</p>
               <input
-                type="text"
+                type="file"
                 placeholder="Upload your image..."
                 className={`${
                   selected === "WebDesign" ? "bg-indigo-700" : "bg-violet-700"
                 } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
               />
+
               <p className="text-2xl mb-2">Description:</p>
               <input
+                name="description"
+                value={description}
                 type="text"
                 placeholder="Your description here..."
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
                 className={`${
                   selected === "WebDesign" ? "bg-indigo-700" : "bg-violet-700"
                 } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
