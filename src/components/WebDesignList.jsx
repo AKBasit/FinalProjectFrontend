@@ -55,7 +55,7 @@ export default function WebDesignList() {
                   handleDelete(oneWebDesign._id);
                 }}
               >
-                Done
+                Delete
               </button>
             </div>
           );
