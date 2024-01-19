@@ -9,6 +9,7 @@ export default function Create() {
   const [description, setDescription] = useState("");
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
+
   const handleCreateTodo = async (e) => {
     e.preventDefault();
     console.log("user in create func", user);

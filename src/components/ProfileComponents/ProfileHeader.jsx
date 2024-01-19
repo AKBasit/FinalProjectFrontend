@@ -9,7 +9,7 @@ export default function ProfileHeader() {
   return (
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div className="max-w-screen-sm sm:text-center sm:mx-auto">
-        <a
+        {/* <a
           href="/"
           aria-label="View"
           className="inline-block mb-5 rounded-full sm:mx-auto"
@@ -29,8 +29,8 @@ export default function ProfileHeader() {
               />
             </svg>
           </div>
-        </a>
-        <h2 className="mb-4 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+        </a> */}
+        <h2 className="mb-4 mt-48 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
           Welcome to your profile <span>{user && user.username}</span>
         </h2>
         <p className="text-base text-gray-700 md:text-lg sm:px-4">

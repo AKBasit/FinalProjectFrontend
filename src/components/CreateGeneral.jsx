@@ -93,12 +93,7 @@ export default function CreateGeneral() {
             >
               <p className="text-2xl mb-2">Web Design name:</p>
               <input
-                name="name"
-                value={name}
                 type="text"
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
                 placeholder="Your Web Design name..."
                 className={`${
                   selected === "WebDesign" ? "bg-indigo-700" : "bg-violet-700"
@@ -116,13 +111,8 @@ export default function CreateGeneral() {
 
               <p className="text-2xl mb-2">Description:</p>
               <input
-                name="description"
-                value={description}
                 type="text"
                 placeholder="Your description here..."
-                onChange={(e) => {
-                  setDescription(e.target.value);
-                }}
                 className={`${
                   selected === "WebDesign" ? "bg-indigo-700" : "bg-violet-700"
                 } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
@@ -257,7 +247,11 @@ export default function CreateGeneral() {
           whileTap={{
             scale: 0.99,
           }}
-          type="submit"
+          type="button"
+          onChange={(e) => {
+            setName(e.target.value);
+            setDescription;
+          }}
           className={`${
             selected === "font"
               ? "bg-white text-indigo-600"

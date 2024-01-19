@@ -3,7 +3,10 @@ import { AiFillApple, AiFillFileImage } from "react-icons/ai";
 import { useRef } from "react";
 import outward from "../../../public/Outward.png";
 import mono from "../../../public/Mono.png";
+import evoke from "../../../public/Evoke.png";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
 function Hero() {
   const targetRef = useRef(null);
@@ -27,27 +30,25 @@ function Hero() {
 
 function Nav({ scrollYProgress }) {
   const background = useTransform(scrollYProgress, (i) =>
-    i === 1 ? "rgb(13,10,9)" : "transparent"
+    i === 1 ? "rgb(13,10,9, 0.05)" : "transparent"
   );
 
   //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
   //NAVBAR
-  //   return (
-  //     <motion.nav
-  //       style={{ background }}
-  //       className="px-4 py-2 flex items-center justify-between fixed top-0 left-0 right-0 z-40 transition-colors"
-  //     >
-  //       <div className="flex items-center gap-2 text-lg text-white">
-  //         <AiFillFileImage className="text-xl" />
-  //         <span className="font-bold">PIXII</span>
-  //       </div>
-  //       <button className="text-sm bg-white text-black hover:opacity-90 transition-opacity font-semibold flex items-center gap-1.5 px-3 py-1.5">
-  //         <AiFillApple className="text-lg" />
-  //         <span>Download</span>
-  //       </button>
-  //     </motion.nav>
-  //   );
+  return (
+    <motion.nav
+      style={{ background }}
+      className="px-4 py-2 flex items-center justify-between fixed top-0 left-0 right-0 z-40 transition-colors"
+    >
+      <div className="flex items-center gap-2 text-lg text-white">
+        <img src={evoke} />
+      </div>
+      <button className="relative scale-100  text-xl overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 from-40% to-indigo-400 px-4 py-2 font-semibold text-gray-100 transition-transform hover:scale-105 active:scale-95">
+        <a href="/profile">Profile</a>
+      </button>
+    </motion.nav>
+  );
 
   //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
@@ -56,6 +57,7 @@ function Copy({ scrollYProgress }) {
   const copyScale = useTransform(scrollYProgress, [0, 0.75], [1, 0.5]);
   const copyOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
   const copyY = useTransform(scrollYProgress, [0, 0.75], ["0%", "7.5%"]);
+  const { isLoggedIn } = useContext(UserContext);
 
   return (
     <motion.div
@@ -75,9 +77,11 @@ function Copy({ scrollYProgress }) {
         portfolio effortlessly!
       </p>
       <div className="flex items-center gap-4">
-        <button className="px-4 py-2 bg-violet-600 hover:bg-violet-600 transition-colors text-white font-medium">
-          <Link to="/signup">Sign up for free</Link>
-        </button>
+        {!isLoggedIn ? (
+          <button className="px-4 py-2 bg-violet-600 hover:bg-violet-600 transition-colors text-white font-medium">
+            <Link to="/signup">Sign up for free</Link>
+          </button>
+        ) : null}
       </div>
     </motion.div>
   );
