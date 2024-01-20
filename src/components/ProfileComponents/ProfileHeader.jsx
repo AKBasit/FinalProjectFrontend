@@ -39,7 +39,7 @@ export default function ProfileHeader() {
         </p>
         <hr className="w-full my-8 border-gray-300" />
       </div>
-      <div className="flex items-center justify-center -mx-4 lg:pl-8 max-w-screen-2xl">
+      <div className="flex items-center justify-center mt-12 -mx-4 lg:pl-8 max-w-screen-2xl">
         <div className="flex flex-col items-end px-3">
           <img
             className="object-cover mb-6 rounded shadow-lg h-28 sm:h-48 xl:h-56 w-28 sm:w-48 xl:w-56"

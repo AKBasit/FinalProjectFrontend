@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import evoke from "../../public/Evoke.png";
+import { motion } from "framer-motion";
 
 const API_URL = "http://localhost:5005";
 
@@ -37,11 +39,7 @@ function Signup() {
     <main className="w-full h-screen flex flex-col items-center justify-center bg-gray-50 sm:px-4">
       <div className="w-full space-y-6 text-gray-600 sm:max-w-md">
         <div className="text-center">
-          <img
-            src="https://floatui.com/logo.svg"
-            width={150}
-            className="mx-auto"
-          />
+          <img src={evoke} width={150} className="mx-auto" />
           <div className="mt-5 space-y-2">
             <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">
               Create an account
@@ -98,6 +96,21 @@ function Signup() {
             <button className="w-full mt-8 px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150">
               Create account
             </button>
+            {/* Submit */}
+            <motion.button
+              whileHover={{
+                scale: 1.01,
+              }}
+              whileTap={{
+                scale: 0.99,
+              }}
+              type="button"
+              className={
+                "w-full mt-4 px-4 py-2 text-white font-medium bg-violet-600 hover:bg-violet-500 active:bg-indigo-600 rounded-lg duration-150"
+              }
+            >
+              <a href="/">Home</a>
+            </motion.button>
           </form>
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </div>
