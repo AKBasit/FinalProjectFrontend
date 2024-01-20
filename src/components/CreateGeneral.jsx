@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import service from "../services/file-upload.service";
 import { useNavigate } from "react-router-dom";
@@ -93,7 +93,7 @@ export default function CreateGeneral() {
                 }}
                 placeholder="Your Web Design name..."
                 className={`${
-                  selected === "WebDesign" ? "bg-indigo-700" : "bg-violet-700"
+                  selected === "webDesign" ? "bg-violet-700" : "bg-indigo-700"
                 } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
               />
 
@@ -104,7 +104,7 @@ export default function CreateGeneral() {
                 accept="image/png, image/jpg"
                 placeholder="Upload your image..."
                 className={`${
-                  selected === "WebDesign" ? "bg-indigo-700" : "bg-violet-700"
+                  selected === "webDesign" ? "bg-violet-700" : "bg-indigo-700"
                 } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
               />
 
@@ -117,7 +117,7 @@ export default function CreateGeneral() {
                   setDescription(e.target.value);
                 }}
                 className={`${
-                  selected === "webDesign" ? "bg-indigo-700" : "bg-violet-700"
+                  selected === "webDesign" ? "bg-violet-700" : "bg-indigo-700"
                 } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
               />
             </div>
@@ -125,7 +125,7 @@ export default function CreateGeneral() {
         </div>
 
         {/* Font Section */}
-        <AnimatePresence>
+        <div>
           {selected === "font" && (
             <motion.div
               initial={{
@@ -169,7 +169,7 @@ export default function CreateGeneral() {
               />
             </motion.div>
           )}
-        </AnimatePresence>
+        </div>
 
         {/* Image section */}
         <AnimatePresence>
@@ -207,13 +207,7 @@ export default function CreateGeneral() {
                   className={`${
                     selected === "font" ? "bg-indigo-700" : "bg-pink-700"
                   } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
-                  onChange={convertToBase64}
                 />
-                {image == "" || image == null ? (
-                  ""
-                ) : (
-                  <img width={100} height={100} src={image} />
-                )}
               </div>
               <p className="text-2xl mb-2">Contributor:</p>
               <input
