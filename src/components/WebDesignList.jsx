@@ -1,11 +1,26 @@
-import { useContext, useEffect } from "react";
-import { WebDesignContext } from "../contexts/WebDesignContext";
+import { useEffect, useState } from "react";
+import service from "../services/file-upload.service";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default function WebDesignList() {
-  const { webDesigns, setWebDesigns, getWebDesigns } =
-    useContext(WebDesignContext);
+  // const { webDesigns, setWebDesigns, getWebDesigns } =
+  //   useContext(WebDesignContext);
+
+  const [webDesigns, setWebDesigns] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await service.getWebDesigns();
+        setWebDesigns(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   // const handleDone = (webDesignId) => {
   //   const mappedWebDesigns = webDesigns.map((elem) => {
@@ -27,32 +42,32 @@ export default function WebDesignList() {
     } catch (err) {
       console.log("there was an error deleting", err);
     }
-
-    //perfect for the DOM
-    const filteredWebDesigns = webDesigns.filter((curr) => {
-      if (curr._id !== id) {
-        return true;
-      }
-    });
-    setWebDesigns(filteredWebDesigns);
   };
-  useEffect(() => {
-    getWebDesigns();
-  }, []);
+
+  //   //perfect for the DOM
+  //   // const filteredWebDesigns = webDesigns.filter((curr) => {
+  //   //   if (curr._id !== id) {
+  //   //     return true;
+  //   //   }
+  //   // });
+  //   // setWebDesigns(filteredWebDesigns);
+  // };
+  // // useEffect(() => {
+  // //   getWebDesigns();
+  // }, []);
+
   return (
     <div className="">
       {webDesigns &&
-        webDesigns.map((oneWebDesign) => {
+        webDesigns.map((webDesign) => {
           return (
-            <div key={oneWebDesign._id}>
-              <Link
-                to={`/webDesigns?name=${oneWebDesign.name}=${oneWebDesign.id}`}
-              >
-                <h4>{oneWebDesign.name}</h4>
+            <div key={webDesign._id}>
+              <Link to={`/webDesigns?name=${webDesign.name}=${webDesign.id}`}>
+                <h4>{webDesign.name}</h4>
               </Link>
               <button
                 onClick={() => {
-                  handleDelete(oneWebDesign._id);
+                  handleDelete(webDesign._id);
                 }}
               >
                 Delete

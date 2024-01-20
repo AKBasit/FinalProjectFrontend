@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { UserContext } from "../contexts/UserContext";
+import service from "../services/file-upload.service";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const BASE_TRANSITION = {
   duration: 0.75,
@@ -10,49 +9,54 @@ const BASE_TRANSITION = {
 
 export default function CreateGeneral() {
   const [selected, setSelected] = useState("webDesign");
-  const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const navigate = useNavigate();
-  const { user } = useContext(UserContext);
+  const [imageUrl, setImageUrl] = useState("");
 
-  const handleCreateWebDesign = async (e) => {
+  const navigate = useNavigate();
+
+  const handleFileUpload = async (e) => {
+    try {
+      const uploadData = new FormData();
+
+      // imageUrl => this name has to be the same as in the model since we pass
+      // req.body to .create() method when creating a new movie in '/api/movies' POST route
+      uploadData.append("imageUrl", e.target.files[0]);
+
+      const response = await service.uploadWebDesign(uploadData);
+
+      // response carries "fileUrl" which we can use to update the state
+      setImageUrl(response.fileUrl);
+    } catch (error) {
+      console.error("Error while uploading the file: ", error);
+    }
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("user in create func", user);
-    const webDesignCreate = {
-      name: name,
-      description: description,
-      owner: user.id,
-    };
-    const { data } = await axios.post(
-      "http://localhost:5005/webdesign",
-      webDesignCreate
-    );
-    console.log("web design successfully created", data);
-    navigate("/profile");
+
+    try {
+      const res = await service.createWebDesign({
+        name,
+        description,
+        imageUrl,
+      });
+
+      // Reset the form
+      setName("");
+      setDescription("");
+      setImageUrl("");
+
+      // navigate to another page
+      navigate("/");
+    } catch (error) {
+      console.error("Error while adding the new web design: ", error);
+    }
   };
 
-  function convertToBase64(e) {
-    console.log(e);
-    const reader = new FileReader();
-    reader.readAsDataURL(e.target.files[0]);
-    reader.onload = () => {
-      console.log(reader.result);
-      setImage(reader.result);
-    };
-    reader.onerror = (error) => {
-      console.log("Error: ", error);
-    };
-  }
   function Form({ selected, setSelected }) {
     return (
       <form
-        method="POST"
-        action="/"
-        encType="multipart/form-data"
-        onSubmit={(e) => {
-          handleCreateWebDesign(e);
-        }}
+        onSubmit={handleSubmit}
         className={`p-8 w-full text-white transition-colors duration-[750ms] ${
           selected === "font"
             ? "bg-indigo-600"
@@ -76,28 +80,17 @@ export default function CreateGeneral() {
         </div>
 
         {/* Web Design Section */}
-        <AnimatePresence>
+        <div>
           {selected === "webDesign" && (
-            <motion.div
-              initial={{
-                marginTop: -104,
-                opacity: 0,
-              }}
-              animate={{
-                marginTop: 0,
-                opacity: 1,
-              }}
-              exit={{
-                marginTop: -104,
-                opacity: 0,
-              }}
-              transition={BASE_TRANSITION}
-              className="mb-6"
-            >
+            <div>
               <p className="text-2xl mb-2">Web Design name:</p>
               <input
                 name="name"
+                value={name}
                 type="text"
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
                 placeholder="Your Web Design name..."
                 className={`${
                   selected === "WebDesign" ? "bg-indigo-700" : "bg-violet-700"
@@ -117,15 +110,19 @@ export default function CreateGeneral() {
 
               <p className="text-2xl mb-2">Description:</p>
               <input
+                name="description"
+                value={description}
                 type="text"
-                placeholder="Your description here..."
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
                 className={`${
                   selected === "WebDesign" ? "bg-indigo-700" : "bg-violet-700"
                 } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
               />
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
+        </div>
 
         {/* Font Section */}
         <AnimatePresence>

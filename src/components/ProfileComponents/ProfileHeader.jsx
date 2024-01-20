@@ -30,7 +30,7 @@ export default function ProfileHeader() {
             </svg>
           </div>
         </a> */}
-        <h2 className="mb-4 mt-48 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+        <h2 className="mb-4 mt-32 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
           Welcome to your profile <span>{user && user.username}</span>
         </h2>
         <p className="text-base text-gray-700 md:text-lg sm:px-4">
