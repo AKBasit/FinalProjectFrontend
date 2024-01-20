@@ -21,7 +21,7 @@ export default function WebDesignList() {
     try {
       //make an axios call to the back to delete the todo as well
       const { data } = await axios.delete(
-        `http://localhost:5005/webdesign/${id}`
+        `http://localhost:5005/web-design/${id}`
       );
       console.log("task was deleted ", data);
     } catch (err) {

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
@@ -7,7 +7,7 @@ import axios from "axios";
 export default function CreateWebDesigns() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [image, setImage] = useState(null);
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
@@ -17,9 +17,10 @@ export default function CreateWebDesigns() {
     const webDesignCreate = {
       name: name,
       description: description,
-      imageUrl: imageUrl,
+      imageUrl: image,
       owner: user.id,
     };
+    console.log(webDesignCreate);
     const { data } = await axios.post(
       "http://localhost:5005/web-design/",
       webDesignCreate
@@ -76,17 +77,18 @@ export default function CreateWebDesigns() {
         <input
           type="file"
           name="imageUrl"
-          value={imageUrl}
+          // value={image}
           accept="image/png, image/jpg"
           placeholder="Upload your image..."
           onChange={(e) => {
-            setImageUrl(e.target.value);
+            console.log(e.target.files);
+            setImage(e.target.files[0]);
           }}
         />
-        {imageUrl == "" || imageUrl == null ? (
+        {image == "" || image == null ? (
           ""
         ) : (
-          <img width={100} height={100} src={imageUrl} />
+          <img width={100} height={100} src={image} />
         )}
       </label>
       <button className="">Create Web Design</button>
