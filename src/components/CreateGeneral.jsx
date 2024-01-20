@@ -117,7 +117,7 @@ export default function CreateGeneral() {
                   setDescription(e.target.value);
                 }}
                 className={`${
-                  selected === "WebDesign" ? "bg-indigo-700" : "bg-violet-700"
+                  selected === "webDesign" ? "bg-indigo-700" : "bg-violet-700"
                 } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0`}
               />
             </div>
