@@ -19,7 +19,7 @@ export default function CreateFonts() {
       owner: user.id,
     };
     const { data } = await axios.post(
-      "http://localhost:5005/fonts/createFont",
+      "http://localhost:5005/font/",
       fontCreate
     );
     console.log("font successfully created", data);

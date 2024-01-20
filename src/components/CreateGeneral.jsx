@@ -25,7 +25,7 @@ export default function CreateGeneral() {
       owner: user.id,
     };
     const { data } = await axios.post(
-      "http://localhost:5005/webdesigns/createWebdesign",
+      "http://localhost:5005/webdesign",
       webDesignCreate
     );
     console.log("web design successfully created", data);
@@ -47,6 +47,9 @@ export default function CreateGeneral() {
   function Form({ selected, setSelected }) {
     return (
       <form
+        method="POST"
+        action="/"
+        encType="multipart/form-data"
         onSubmit={(e) => {
           handleCreateWebDesign(e);
         }}
@@ -93,6 +96,7 @@ export default function CreateGeneral() {
             >
               <p className="text-2xl mb-2">Web Design name:</p>
               <input
+                name="name"
                 type="text"
                 placeholder="Your Web Design name..."
                 className={`${
@@ -103,6 +107,8 @@ export default function CreateGeneral() {
               <p className="text-2xl mb-2">Image:</p>
               <input
                 type="file"
+                name="imageUrl"
+                accept="image/png, image/jpg"
                 placeholder="Upload your image..."
                 className={`${
                   selected === "WebDesign" ? "bg-indigo-700" : "bg-violet-700"
@@ -248,10 +254,10 @@ export default function CreateGeneral() {
             scale: 0.99,
           }}
           type="button"
-          onChange={(e) => {
-            setName(e.target.value);
-            setDescription;
-          }}
+          // onChange={(e) => {
+          //   setName(e.target.value);
+          //   setDescription;
+          // }}
           className={`${
             selected === "font"
               ? "bg-white text-indigo-600"

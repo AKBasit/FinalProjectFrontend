@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
@@ -7,7 +7,7 @@ import axios from "axios";
 export default function CreateWebDesigns() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
@@ -17,30 +17,37 @@ export default function CreateWebDesigns() {
     const webDesignCreate = {
       name: name,
       description: description,
+      imageUrl: image,
       owner: user.id,
     };
+    console.log(webDesignCreate);
     const { data } = await axios.post(
-      "http://localhost:5005/webdesigns/createWebdesign",
+      "http://localhost:5005/web-design/",
       webDesignCreate
     );
     console.log("web design successfully created", data);
     navigate("/profile");
   };
-  function convertToBase64(e) {
-    console.log(e);
-    const reader = new FileReader();
-    reader.readAsDataURL(e.target.files[0]);
-    reader.onload = () => {
-      console.log(reader.result);
-      setImage(reader.result);
-    };
-    reader.onerror = (error) => {
-      console.log("Error: ", error);
-    };
-  }
+  // function convertToBase64(e) {
+  //   console.log(e);
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(e.target.files[0]);
+  //   reader.onload = () => {
+  //     console.log(reader.result);
+  //     setImage(reader.result);
+  //   };
+  //   reader.onerror = (error) => {
+  //     console.log("Error: ", error);
+  //   };
+  // }
 
   return (
-    <form onSubmit={handleCreateWebDesign}>
+    <form
+      onSubmit={handleCreateWebDesign}
+      method="POST"
+      action="/"
+      encType="multipart/form-data"
+    >
       <label>
         Web Design Name:
         <input
@@ -68,11 +75,14 @@ export default function CreateWebDesigns() {
       <label>
         Web Design Image:
         <input
-          name="image"
-          accept="image/*"
           type="file"
+          name="imageUrl"
+          // value={image}
+          accept="image/png, image/jpg"
+          placeholder="Upload your image..."
           onChange={(e) => {
-            setImage(e.target.value);
+            console.log(e.target.files);
+            setImage(e.target.files[0]);
           }}
         />
         {image == "" || image == null ? (

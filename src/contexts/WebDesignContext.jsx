@@ -8,14 +8,11 @@ const WebDesignWrapper = ({ children }) => {
   const [webDesigns, setWebDesigns] = useState([]);
   const { user } = useContext(UserContext);
   const getWebDesigns = async () => {
-    const { data } = await axios.get(
-      "http://localhost:5005/webdesigns/allWebdesigns",
-      {
-        headers: {
-          currentuser: user.id,
-        },
-      }
-    );
+    const { data } = await axios.get("http://localhost:5005/web-design/user", {
+      headers: {
+        currentuser: user.id,
+      },
+    });
     console.log("response with all web designs", data);
     setWebDesigns(data);
   };
