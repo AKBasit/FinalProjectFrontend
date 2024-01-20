@@ -31,7 +31,10 @@ export default function ProfileHeader() {
           </div>
         </a> */}
         <h2 className="mb-4 mt-32 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
-          Welcome to your profile <span>{user && user.username}</span>
+          Welcome to your profile{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-tl from-red-700 via-violet-500 to-violet-600">
+            {user && user.username}
+          </span>
         </h2>
         <p className="text-base text-gray-700 md:text-lg sm:px-4">
           Your tailored database playground! Craft, shape, and explore

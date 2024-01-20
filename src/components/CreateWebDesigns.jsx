@@ -4,6 +4,11 @@ import { useNavigate } from "react-router-dom";
 // import { UserContext } from "../contexts/UserContext";
 // import axios from "axios";
 import service from "../services/file-upload.service";
+import { hourglass } from "ldrs";
+
+hourglass.register();
+
+// Default values shown
 
 export default function CreateWebDesigns() {
   const [name, setName] = useState("");
@@ -48,7 +53,7 @@ export default function CreateWebDesigns() {
       setImageUrl("");
 
       // navigate to another page
-      navigate("/");
+      navigate("/profile");
     } catch (error) {
       console.error("Error while adding the new web design: ", error);
     }
@@ -86,7 +91,16 @@ export default function CreateWebDesigns() {
   // }
 
   if (loading) {
-    return <h1>Loading</h1>;
+    return (
+      <div className="flex justify-center py-96 h-screen bg-black/5">
+        <l-hourglass
+          size="40"
+          bg-opacity="0.1"
+          speed="1.75"
+          color="black"
+        ></l-hourglass>
+      </div>
+    );
   } else {
     return (
       <form onSubmit={handleSubmit}>

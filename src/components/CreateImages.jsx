@@ -2,14 +2,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { UserContext } from "../contexts/UserContext";
 // import axios from "axios";
-import service from "../services/file-font-upload.service";
+import service from "../services/file-image-upload.service";
 import { hourglass } from "ldrs";
 
 hourglass.register();
 
-export default function CreateFonts() {
+// Default values shown
+
+export default function CreateImages() {
   const [name, setName] = useState("");
-  const [license, setLicense] = useState("");
+  const [contributor, setContributor] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -24,7 +26,7 @@ export default function CreateFonts() {
       // req.body to .create() method when creating a new movie in '/api/movies' POST route
       uploadData.append("imageUrl", e.target.files[0]);
 
-      const response = await service.uploadFonts(uploadData);
+      const response = await service.uploadImage(uploadData);
 
       // response carries "fileUrl" which we can use to update the state
       setImageUrl(response.fileUrl);
@@ -38,23 +40,54 @@ export default function CreateFonts() {
     e.preventDefault();
 
     try {
-      const res = await service.createFont({
+      const res = await service.createImage({
         name,
-        license,
+        contributor,
         imageUrl,
       });
 
       // Reset the form
       setName("");
-      setLicense("");
+      setContributor("");
       setImageUrl("");
 
       // navigate to another page
       navigate("/profile");
     } catch (error) {
-      console.error("Error while adding the new font: ", error);
+      console.error("Error while adding the new image: ", error);
     }
   };
+
+  // const handleCreateWebDesign = async (e) => {
+  //   e.preventDefault();
+  //   console.log("user in create func", user);
+  //   const webDesignCreate = {
+  //     name: name,
+  //     description: description,
+  //     imageUrl: image,
+  //     owner: user.id,
+  //   };
+  //   console.log(webDesignCreate);
+  //   const { data } = await axios.post(
+  //     "http://localhost:5005/web-design/",
+  //     webDesignCreate
+  //   );
+  //   console.log("web design successfully created", data);
+  //   navigate("/profile");
+  // };
+
+  // function convertToBase64(e) {
+  //   console.log(e);
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(e.target.files[0]);
+  //   reader.onload = () => {
+  //     console.log(reader.result);
+  //     setImage(reader.result);
+  //   };
+  //   reader.onerror = (error) => {
+  //     console.log("Error: ", error);
+  //   };
+  // }
 
   if (loading) {
     return (
@@ -71,7 +104,7 @@ export default function CreateFonts() {
     return (
       <form onSubmit={handleSubmit}>
         <label>
-          Font Name:
+          Image Name:
           <input
             name="name"
             value={name}
@@ -85,20 +118,20 @@ export default function CreateFonts() {
         <label>
           Web Design Description:
           <input
-            name="license"
-            value={license}
+            name="contributor"
+            value={contributor}
             type="text"
             onChange={(e) => {
-              setLicense(e.target.value);
+              setContributor(e.target.value);
             }}
           />
         </label>
 
         <label>
-          Font Image:
+          Web Design Image:
           <input type="file" onChange={(e) => handleFileUpload(e)} />
         </label>
-        <button className="">Create Font</button>
+        <button className="">Create Image</button>
       </form>
     );
   }
