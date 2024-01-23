@@ -83,7 +83,7 @@ export default function CreateFonts() {
         </label>
 
         <label>
-          Web Design Description:
+          Font License:
           <input
             name="license"
             value={license}

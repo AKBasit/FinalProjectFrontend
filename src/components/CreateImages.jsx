@@ -116,7 +116,7 @@ export default function CreateImages() {
         </label>
 
         <label>
-          Web Design Description:
+          Image contributor:
           <input
             name="contributor"
             value={contributor}
@@ -128,7 +128,7 @@ export default function CreateImages() {
         </label>
 
         <label>
-          Web Design Image:
+          Image:
           <input type="file" onChange={(e) => handleFileUpload(e)} />
         </label>
         <button className="">Create Image</button>
