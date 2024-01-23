@@ -152,11 +152,11 @@ const DashboardButton = () => {
   return (
     <button className="group relative font-semibold text-xl scale-100 overflow-hidden rounded-lg px-4 py-2 transition-transform hover:scale-105 active:scale-95">
       <a
-        href="/"
+        href="/collectiveLibrary"
         className="relative z-10 text-gray/90 transition-colors group-hover:text-gray"
       >
         {/* change a ref to dashboard */}
-        Dashboard
+        Our Library
       </a>
       <span className="absolute inset-0 z-0 bg-gradient-to-br from-gray/20 to-gray/5 opacity-0 transition-opacity group-hover:opacity-100" />
     </button>

@@ -8,6 +8,7 @@ import IsPrivate from "./components/IsPrivate";
 import CreateWebDesigns from "./components/CreateWebDesigns";
 import CreateFonts from "./components/CreateFonts";
 import CreateImages from "./components/CreateImages";
+import CollectiveLibrary from "./components/CollectiveLibrary";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/createWebdesigns" element={<CreateWebDesigns />} />
         <Route path="/createFonts" element={<CreateFonts />} />
         <Route path="/createImages" element={<CreateImages />} />
+        <Route path="/collectiveLibrary" element={<CollectiveLibrary />} />
 
         <Route
           path="/profile"

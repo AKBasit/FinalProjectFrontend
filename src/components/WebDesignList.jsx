@@ -58,7 +58,9 @@ export default function WebDesignList() {
         webDesigns.map((webDesign) => {
           return (
             <div key={webDesign._id}>
-              <Link to={`/web-design?name=${webDesign.name}=${webDesign.id}`}>
+              <Link
+                to={`/web-design?name=${webDesign.imageURL}=${webDesign.id}`}
+              >
                 <h4>{webDesign.name}</h4>
               </Link>
               <button
