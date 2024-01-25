@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import service from "../services/file-upload.service";
+import service from "../../services/file-upload.service";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
