@@ -1,18 +1,17 @@
-import { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { UserContext } from "../contexts/UserContext";
 // import axios from "axios";
-import service from "../services/file-upload.service";
+import service from "../../services/file-image-upload.service";
 import { hourglass } from "ldrs";
 
 hourglass.register();
 
 // Default values shown
 
-export default function CreateWebDesigns() {
+export default function CreateImages() {
   const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [contributor, setContributor] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -27,7 +26,7 @@ export default function CreateWebDesigns() {
       // req.body to .create() method when creating a new movie in '/api/movies' POST route
       uploadData.append("imageUrl", e.target.files[0]);
 
-      const response = await service.uploadWebDesign(uploadData);
+      const response = await service.uploadImage(uploadData);
 
       // response carries "fileUrl" which we can use to update the state
       setImageUrl(response.fileUrl);
@@ -41,21 +40,21 @@ export default function CreateWebDesigns() {
     e.preventDefault();
 
     try {
-      const res = await service.createWebDesign({
+      const res = await service.createImage({
         name,
-        description,
+        contributor,
         imageUrl,
       });
 
       // Reset the form
       setName("");
-      setDescription("");
+      setContributor("");
       setImageUrl("");
 
       // navigate to another page
       navigate("/profile");
     } catch (error) {
-      console.error("Error while adding the new web design: ", error);
+      console.error("Error while adding the new image: ", error);
     }
   };
 
@@ -103,9 +102,9 @@ export default function CreateWebDesigns() {
     );
   } else {
     return (
-      <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
-        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-          Web Design Name:
+      <form onSubmit={handleSubmit}>
+        <label>
+          Image Name:
           <input
             name="name"
             value={name}
@@ -113,28 +112,26 @@ export default function CreateWebDesigns() {
             onChange={(e) => {
               setName(e.target.value);
             }}
-            className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500"
-          />
-        </label>
-
-        <label className="block mb-2 text-sm font-medium text-gray-900">
-          Web Design Description:
-          <input
-            name="description"
-            value={description}
-            type="text"
-            onChange={(e) => {
-              setDescription(e.target.value);
-            }}
-            className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500"
           />
         </label>
 
         <label>
-          Web Design Image:
+          Image contributor:
+          <input
+            name="contributor"
+            value={contributor}
+            type="text"
+            onChange={(e) => {
+              setContributor(e.target.value);
+            }}
+          />
+        </label>
+
+        <label>
+          Image:
           <input type="file" onChange={(e) => handleFileUpload(e)} />
         </label>
-        <button className="">Create Web Design</button>
+        <button className="">Create Image</button>
       </form>
     );
   }

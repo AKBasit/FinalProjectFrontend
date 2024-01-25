@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { UserContext } from "../contexts/UserContext";
 // import axios from "axios";
-import service from "../services/file-font-upload.service";
+import service from "../../services/file-font-upload.service";
 import { hourglass } from "ldrs";
 
 hourglass.register();

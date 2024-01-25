@@ -1,4 +1,4 @@
-import Header from "./Header";
+import Header from "../Layout/Header";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -20,23 +20,26 @@ const CollectiveFontLibrary = () => {
     }
   };
 
- const handleChangeShared = async (item) => {
-  const newFont = {
-    name: item.name,
-    imageUrl: item.imageUrl,
-    contributor: item.contributor,
-    owner: item.owner,
-    shared: !item.shared
-  }
+  const handleChangeShared = async (item) => {
+    const newFont = {
+      name: item.name,
+      imageUrl: item.imageUrl,
+      contributor: item.contributor,
+      owner: item.owner,
+      shared: !item.shared,
+    };
 
-  try {
-    const response = await axios.put('http://localhost:5005/font/shared/' + item._id, newFont);
-    console.log(response);
-    fetchData()
-  } catch(error) {
-    console.log(error)
-  }
- }
+    try {
+      const response = await axios.put(
+        "http://localhost:5005/font/shared/" + item._id,
+        newFont
+      );
+      console.log(response);
+      fetchData();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -44,9 +47,11 @@ const CollectiveFontLibrary = () => {
       {fonts.map((font) => {
         return (
           <div key={font._id}>
-            <img src={font.src} height="200" />
+            <img src={font.imageUrl} height="200" />
             <p>{font.name}</p>
-            <button onClick={() => handleChangeShared(font)}>{font.shared ? 'Shared' : 'Not Shared'}</button>
+            <button onClick={() => handleChangeShared(font)}>
+              {font.shared ? "Shared" : "Not Shared"}
+            </button>
           </div>
         );
       })}

@@ -1,4 +1,4 @@
-import Header from "./Header";
+import Header from "../Layout/Header";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -20,23 +20,26 @@ const CollectiveImageLibrary = () => {
     }
   };
 
- const handleChangeShared = async (item) => {
-  const newImage = {
-    name: item.name,
-    imageUrl: item.imageUrl,
-    contributor: item.contributor,
-    owner: item.owner,
-    shared: !item.shared
-  }
+  const handleChangeShared = async (item) => {
+    const newImage = {
+      name: item.name,
+      imageUrl: item.imageUrl,
+      contributor: item.contributor,
+      owner: item.owner,
+      shared: !item.shared,
+    };
 
-  try {
-    const response = await axios.put('http://localhost:5005/image/shared/' + item._id, newImage);
-    console.log(response);
-    fetchData()
-  } catch(error) {
-    console.log(error)
-  }
- }
+    try {
+      const response = await axios.put(
+        "http://localhost:5005/image/shared/" + item._id,
+        newImage
+      );
+      console.log(response);
+      fetchData();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -44,9 +47,11 @@ const CollectiveImageLibrary = () => {
       {images.map((image) => {
         return (
           <div key={image._id}>
-            <img src={image.src} height="200" />
+            <img src={image.imageUrl} height="200" />
             <p>{image.name}</p>
-            <button onClick={() => handleChangeShared(image)}>{image.shared ? 'Shared' : 'Not Shared'}</button>
+            <button onClick={() => handleChangeShared(image)}>
+              {image.shared ? "It is Shared" : "Not Shared"}
+            </button>
           </div>
         );
       })}
@@ -55,5 +60,3 @@ const CollectiveImageLibrary = () => {
 };
 
 export default CollectiveImageLibrary;
-
-

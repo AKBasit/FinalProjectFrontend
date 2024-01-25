@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { UserContext } from "../contexts/UserContext";
-import evoke from "../../public/Evoke.png";
+import { UserContext } from "../../contexts/UserContext";
+import evoke from "../../../public/Evoke.png";
 import { motion } from "framer-motion";
 
 const API_URL = "http://localhost:5005";
