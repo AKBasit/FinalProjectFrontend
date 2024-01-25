@@ -103,8 +103,8 @@ export default function CreateWebDesigns() {
     );
   } else {
     return (
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
+        <label className="block mb-2 text-sm font-medium text-gray-900 ">
           Web Design Name:
           <input
             name="name"
@@ -113,10 +113,11 @@ export default function CreateWebDesigns() {
             onChange={(e) => {
               setName(e.target.value);
             }}
+            className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500"
           />
         </label>
 
-        <label>
+        <label className="block mb-2 text-sm font-medium text-gray-900">
           Web Design Description:
           <input
             name="description"
@@ -125,6 +126,7 @@ export default function CreateWebDesigns() {
             onChange={(e) => {
               setDescription(e.target.value);
             }}
+            className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500"
           />
         </label>
 
