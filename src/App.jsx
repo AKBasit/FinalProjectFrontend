@@ -8,7 +8,9 @@ import IsPrivate from "./components/IsPrivate";
 import CreateWebDesigns from "./components/CreateWebDesigns";
 import CreateFonts from "./components/CreateFonts";
 import CreateImages from "./components/CreateImages";
-import CollectiveLibrary from "./components/CollectiveLibrary";
+import CollectiveImageLibrary from "./components/CollectiveImageLibrary";
+import CollectiveFontLibrary from "./components/CollectiveFontLibrary";
+import CollectiveWebDesignLibrary from "./components/CollectiveWebDesignLibrary";
 import NotFound from "./components/NotFound";
 // import WebDesignCardDetails from "./components/WebDesignCardDetails";
 
@@ -22,7 +24,9 @@ function App() {
         <Route path="/createWebdesigns" element={<CreateWebDesigns />} />
         <Route path="/createFonts" element={<CreateFonts />} />
         <Route path="/createImages" element={<CreateImages />} />
-        <Route path="/collectiveLibrary" element={<CollectiveLibrary />} />
+        <Route path="/collectiveImageLibrary" element={<CollectiveImageLibrary />} />
+        <Route path="/collectiveFontLibrary" element={<CollectiveFontLibrary />} />
+        <Route path="/collectiveWebDesignLibrary" element={<CollectiveWebDesignLibrary />} />
         {/* <Route path="/web-design/:id" element={<WebDesignCardDetails webD />} /> */}
 
         <Route

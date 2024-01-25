@@ -30,7 +30,7 @@ const CollectiveWebDesignLibrary = () => {
   }
 
   try {
-    const response = await axios.put('http://localhost:5005/webDesign/shared/' + item._id, newWebdesign);
+    const response = await axios.put('http://localhost:5005/web-design/shared/' + item._id, newWebdesign);
     console.log(response);
     fetchData()
   } catch(error) {
