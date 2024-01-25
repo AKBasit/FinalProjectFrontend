@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import service from "../services/file-upload.service";
 import { Link } from "react-router-dom";
 import axios from "axios";
+// import WebDesignCardDetails from "./WebDesignCardDetails";
 
 export default function WebDesignList() {
   // const { webDesigns, setWebDesigns, getWebDesigns } =
@@ -53,26 +54,39 @@ export default function WebDesignList() {
   };
 
   return (
-    <div className="">
-      {webDesigns &&
-        webDesigns.map((webDesign) => {
-          return (
-            <div key={webDesign._id}>
-              <Link
-                to={`/web-design?name=${webDesign.imageURL}=${webDesign.id}`}
-              >
-                <h4>{webDesign.name}</h4>
-              </Link>
-              <button
-                onClick={() => {
-                  handleDelete(webDesign._id);
-                }}
-              >
-                Delete
-              </button>
-            </div>
-          );
-        })}
+    <div className="flex justify-between">
+      <div className="grid grid-cols-4 gap-5">
+        {webDesigns &&
+          webDesigns.map((webDesign) => {
+            return (
+              <div key={webDesign._id}>
+                <Link to={`/web-design/${webDesign._id}`}>
+                  <img
+                    src={webDesign.imageUrl}
+                    alt={webDesign.name}
+                    style={{
+                      objectFit: "cover",
+                      maxWidth: "100%",
+                      height: "100%",
+                    }}
+                  />
+                </Link>
+                {/* <WebDesignCardDetails
+                  key={webDesign.id}
+                  webDesigns={webDesigns}
+                /> */}
+                {/* <button
+                  onClick={() => {
+                    handleDelete(webDesign._id);
+                  }}
+                  className="py-4"
+                >
+                  Delete
+                </button> */}
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 }

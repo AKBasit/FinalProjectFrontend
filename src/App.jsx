@@ -9,6 +9,8 @@ import CreateWebDesigns from "./components/CreateWebDesigns";
 import CreateFonts from "./components/CreateFonts";
 import CreateImages from "./components/CreateImages";
 import CollectiveLibrary from "./components/CollectiveLibrary";
+import NotFound from "./components/NotFound";
+// import WebDesignCardDetails from "./components/WebDesignCardDetails";
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
         <Route path="/createFonts" element={<CreateFonts />} />
         <Route path="/createImages" element={<CreateImages />} />
         <Route path="/collectiveLibrary" element={<CollectiveLibrary />} />
+        {/* <Route path="/web-design/:id" element={<WebDesignCardDetails webD />} /> */}
 
         <Route
           path="/profile"
@@ -32,7 +35,7 @@ function App() {
             </IsPrivate>
           }
         />
-        <Route path="*" element={<h2>404 Page Not Found</h2>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
