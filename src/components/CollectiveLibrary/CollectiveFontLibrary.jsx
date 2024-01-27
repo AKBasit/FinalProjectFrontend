@@ -18,25 +18,30 @@ const CollectiveFontLibrary = () => {
     }
   };
   return (
-    <div>
-      <h1>Collective Font Library</h1>
-      {fonts.map((font) => {
-        return (
-          <div key={font._id}>
-            <Link to={`/font/shared/${font._id}`}>
-              <img
-                src={font.imageUrl}
-                alt={font.name}
-                style={{
-                  objectFit: "cover",
-                  maxWidth: "100%",
-                  height: "100%",
-                }}
-              />
-            </Link>
-          </div>
-        );
-      })}
+    <div className="flex justify-between">
+      <div className="grid grid-cols-4 gap-5">
+        <button>
+          <a href="/profile">Profile</a>
+        </button>
+        <h1>Collective Font Library</h1>
+        {fonts.map((font) => {
+          return (
+            <div key={font._id}>
+              <Link to={`/font/shared/${font._id}`}>
+                <img
+                  src={font.imageUrl}
+                  alt={font.name}
+                  style={{
+                    objectFit: "cover",
+                    maxWidth: "100%",
+                    height: "100%",
+                  }}
+                />
+              </Link>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

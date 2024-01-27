@@ -42,7 +42,7 @@ export default function CollectiveFontCardDetails() {
         <a href="/profile">Profile</a>
       </button>
       <button>
-        <a href="/collectiveFontDetail">Font Library</a>
+        <a href="/collectiveFontLibrary">Font Library</a>
       </button>
     </div>
   );
