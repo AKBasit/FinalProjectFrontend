@@ -42,7 +42,7 @@ export default function CollectiveImageCardDetails() {
         <a href="/profile">Profile</a>
       </button>
       <button>
-        <a href="/CollectiveImageLibrary">Image Library</a>
+        <a href="/collectiveImageLibrary">Image Library</a>
       </button>
     </div>
   );

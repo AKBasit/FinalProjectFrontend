@@ -18,25 +18,30 @@ const CollectiveImageLibrary = () => {
     }
   };
   return (
-    <div>
-      <h1>Collective Image Library</h1>
-      {images.map((image) => {
-        return (
-          <div key={image._id}>
-            <Link to={`/image/shared/${image._id}`}>
-              <img
-                src={image.imageUrl}
-                alt={image.name}
-                style={{
-                  objectFit: "cover",
-                  maxWidth: "100%",
-                  height: "100%",
-                }}
-              />
-            </Link>
-          </div>
-        );
-      })}
+    <div className="flex justify-between">
+      <div className="grid grid-cols-4 gap-5">
+        <button>
+          <a href="/profile">Profile</a>
+        </button>
+        <h1>Collective Image Library</h1>
+        {images.map((image) => {
+          return (
+            <div key={image._id}>
+              <Link to={`/image/shared/${image._id}`}>
+                <img
+                  src={image.imageUrl}
+                  alt={image.name}
+                  style={{
+                    objectFit: "cover",
+                    maxWidth: "100%",
+                    height: "100%",
+                  }}
+                />
+              </Link>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
