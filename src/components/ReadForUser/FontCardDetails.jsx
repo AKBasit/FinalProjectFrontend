@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function FontCardDetails() {
   const { fontId } = useParams();
@@ -90,7 +90,7 @@ export default function FontCardDetails() {
       <img src={fontDetail.imageUrl} />
       {/* If the function onDelete was sent, then show the button else (:) show nothing */}
       <button onClick={() => handleChangeShared(fontDetail)}>
-        {fontDetail.shared ? "It is Shared" : "Share"}
+        {fontDetail.shared ? "Unshare" : "Share"}
       </button>
       <br />
       <button
@@ -104,6 +104,10 @@ export default function FontCardDetails() {
       {/* <Link to={`/character/edit/${webDesign._id}`}>
           <button>Edit Character</button>
         </Link> */}
+      <br />
+      <Link to={`/font/update/${fontDetail._id}`}>
+        <button>Edit Font</button>
+      </Link>
       <br />
       <button>
         <a href="/profile">Back to profile</a>

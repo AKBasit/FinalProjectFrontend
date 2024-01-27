@@ -16,6 +16,8 @@ import WebDesignCardDetails from "./components/ReadForUser/WebDesignCardDetails"
 import ImageCardDetails from "./components/ReadForUser/ImageCardDetails";
 import FontCardDetails from "./components/ReadForUser/FontCardDetails";
 import WebDesignUpdate from "./components/UpdateUserCards/WebDesignUpdate";
+import FontUpdate from "./components/UpdateUserCards/FontUpdate";
+import ImageUpdate from "./components/UpdateUserCards/ImageUpdate";
 import CollectiveFontCardDetails from "./components/ReadForCollective/CollectiveFontCardDetail";
 import CollectiveWebDesignCardDetails from "./components/ReadForCollective/CollectiveWebDesignCardDetail";
 import CollectiveImageCardDetails from "./components/ReadForCollective/CollectiveImageCardDetail";
@@ -69,6 +71,10 @@ function App() {
           path="/web-design/update/:webDesignId"
           element={<WebDesignUpdate />}
         />
+
+        <Route path="/image/update/:imageId" element={<ImageUpdate />} />
+
+        <Route path="/font/update/:fontId" element={<FontUpdate />} />
 
         <Route
           path="/profile"

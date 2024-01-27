@@ -93,7 +93,7 @@ export default function WebDesignCardDetails() {
       <img src={webDesignDetail.imageUrl} />
       {/* If the function onDelete was sent, then show the button else (:) show nothing */}
       <button onClick={() => handleChangeShared(webDesignDetail)}>
-        {webDesignDetail.shared ? "It is Shared" : "Share"}
+        {webDesignDetail.shared ? "Unshare" : "Share"}
       </button>
       <br />
       <button
