@@ -12,7 +12,7 @@ const errorHandler = (err) => {
   throw err;
 };
 
-const getImage = async () => {
+const getImages = async () => {
   try {
     const res = await api.get("/user");
     return res.data;
@@ -42,7 +42,7 @@ const createImage = async (newImage) => {
 };
 
 export default {
-  getImage,
+  getImages,
   uploadImage,
   createImage,
 };

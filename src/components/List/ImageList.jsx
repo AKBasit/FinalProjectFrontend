@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
-import service from "../../services/file-upload.service";
+import service from "../../services/file-image-upload.service";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
-export default function WebDesignList() {
-  // const { webDesigns, setWebDesigns, getWebDesigns } =
-  //   useContext(WebDesignContext);
+export default function ImageList() {
+  // const { images, setimages, getimages } =
+  //   useContext(imageContext);
 
-  const [webDesigns, setWebDesigns] = useState([]);
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await service.getWebDesigns();
-        setWebDesigns(data);
+        const data = await service.getImages();
+        setImages(data);
       } catch (error) {
         console.error(error);
       }
@@ -22,52 +21,32 @@ export default function WebDesignList() {
     fetchData();
   }, []);
 
-  // const handleDone = (webDesignId) => {
-  //   const mappedWebDesigns = webDesigns.map((elem) => {
-  //     if (elem.id === webDesignId) {
+  // const handleDone = (imageId) => {
+  //   const mappedimages = images.map((elem) => {
+  //     if (elem.id === imageId) {
   //       elem.done = !elem.done;
   //     }
   //     return elem;
   //   });
-  //   setWebDesigns(mappedWebDesigns);
+  //   setimages(mappedimages);
   // };
-
-  const handleDelete = async (id) => {
-    try {
-      //make an axios call to the back to delete the todo as well
-      const { data } = await axios.delete(
-        `http://localhost:5005/web-design/${id}`
-      );
-      console.log("design was deleted ", data);
-    } catch (err) {
-      console.log("there was an error deleting", err);
-    }
-
-    // perfect for the DOM
-    const filteredWebDesigns = webDesigns.filter((curr) => {
-      if (curr._id !== id) {
-        return true;
-      }
-    });
-    setWebDesigns(filteredWebDesigns);
-  };
-
   return (
     <div className="">
-      {webDesigns &&
-        webDesigns.map((webDesign) => {
+      {images &&
+        images.map((image) => {
           return (
-            <div key={webDesign._id}>
-              <Link to={`/web-design?name=${webDesign.name}=${webDesign.id}`}>
-                <h4>{webDesign.name}</h4>
+            <div key={image._id}>
+              <Link to={`/image/${image.id}`}>
+                <img
+                  src={image.imageUrl}
+                  alt={image.name}
+                  style={{
+                    objectFit: "cover",
+                    maxWidth: "100%",
+                    height: "100%",
+                  }}
+                />
               </Link>
-              <button
-                onClick={() => {
-                  handleDelete(webDesign._id);
-                }}
-              >
-                Delete
-              </button>
             </div>
           );
         })}
