@@ -48,7 +48,7 @@ const GlassNavigation = () => {
       style={{
         cursor: hovered ? "none" : "auto",
       }}
-      className="glass-nav fixed left-0 right-0 top-0 z-10 mx-auto max-w-7xl overflow-hidden border-[1px] border-gray/10 bg-gradient-to-br from-gray/20 to-gray/5 backdrop-blur md:left-6 md:right-6 md:top-6 md:rounded-2xl"
+      className="glass-nav fixed left-0 right-0 top-0 z-10 mx-auto max-w-6xl overflow-hidden border-[1px] border-gray/10 bg-gradient-to-br from-gray/20 to-gray/5 backdrop-blur md:left-6 md:right-6 md:top-6 md:rounded-2xl"
     >
       <div className="glass-nav flex items-center justify-between px-5 py-5">
         <Cursor hovered={hovered} scope={scope} />
@@ -165,17 +165,6 @@ const SignUpButton = () => {
 const DashboardButton = () => {
   return (
     <>
-      <button className="group relative font-semibold text-xl scale-100 overflow-hidden rounded-lg px-4 py-2 transition-transform hover:scale-105 active:scale-95">
-        <a
-          href="/collectiveWebDesignLibrary"
-          className="relative z-10 text-gray/90 transition-colors group-hover:text-gray"
-        >
-          {/* change a ref to WD */}
-          Web-Design Library
-        </a>
-        <span className="absolute inset-0 z-0 bg-gradient-to-br from-gray/20 to-gray/5 opacity-0 transition-opacity group-hover:opacity-100" />
-      </button>
-
       <button className="group relative font-semibold text-xl scale-100 overflow-hidden rounded-lg px-4 py-2 transition-transform hover:scale-105 active:scale-95">
         <a
           href="/collectiveImageLibrary"

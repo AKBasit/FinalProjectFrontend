@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 // import { PageLoader } from "../utilities/PageLoader";
 
 export default function WebDesignCardDetails() {
@@ -107,6 +107,11 @@ export default function WebDesignCardDetails() {
       {/* <Link to={`/character/edit/${webDesign._id}`}>
           <button>Edit Character</button>
         </Link> */}
+      <br />
+      {/* Link to the update page with the web design ID */}
+      <Link to={`/web-design/update/${webDesignDetail._id}`}>
+        <button>Edit Web Design</button>
+      </Link>
       <br />
       <button>
         <a href="/profile">Back to profile</a>

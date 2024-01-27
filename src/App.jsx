@@ -15,6 +15,7 @@ import NotFound from "./components/NotFound";
 import WebDesignCardDetails from "./components/ReadForUser/WebDesignCardDetails";
 import ImageCardDetails from "./components/ReadForUser/ImageCardDetails";
 import FontCardDetails from "./components/ReadForUser/FontCardDetails";
+import WebDesignUpdate from "./components/UpdateUserCards/WebDesignUpdate";
 
 function App() {
   return (
@@ -45,6 +46,11 @@ function App() {
         />
         <Route path="/image/:imageId" element={<ImageCardDetails />} />
         <Route path="/font/:fontId" element={<FontCardDetails />} />
+
+        <Route
+          path="/web-design/update/:webDesignId"
+          element={<WebDesignUpdate />}
+        />
 
         <Route
           path="/profile"

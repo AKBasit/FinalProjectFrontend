@@ -8,6 +8,18 @@ import ImageList from "../List/ImageList";
 
 export default function Profile() {
   const { handleLogout } = useContext(UserContext);
+  const shuffleArray = (array) => {
+    const shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ];
+    }
+    return shuffledArray;
+  };
+
   return (
     <div>
       <ProfileHeader />
@@ -25,9 +37,18 @@ export default function Profile() {
           Create Image
         </Link>
       </div>
-      <WebDesignList />
-      <FontList />
-      <ImageList />
+
+      <div className="my-14">
+        <WebDesignList />
+      </div>
+
+      <div className="my-14">
+        <FontList />
+      </div>
+
+      <div className="my-14">
+        <ImageList />
+      </div>
     </div>
   );
 }
