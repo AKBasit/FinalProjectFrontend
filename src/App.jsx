@@ -43,8 +43,8 @@ function App() {
           path="/web-design/:webDesignId"
           element={<WebDesignCardDetails />}
         />
-        <Route path="/web-design/:imageId" element={<ImageCardDetails />} />
-        <Route path="/web-design/:fontId" element={<FontCardDetails />} />
+        <Route path="/image/:imageId" element={<ImageCardDetails />} />
+        <Route path="/font/:fontId" element={<FontCardDetails />} />
 
         <Route
           path="/profile"

@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+// import { PageLoader } from "../utilities/PageLoader";
 
 export default function WebDesignCardDetails() {
   const { webDesignId } = useParams();
   const [webDesignDetail, setWebDesignDetail] = useState({});
   const [loading, setLoading] = useState(false);
-  const [webdesign, setWebdesign] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -72,9 +72,6 @@ export default function WebDesignCardDetails() {
   //       setWebDesignDetail(webDesignData);
   //     }
   //   }, [webDesignId]);
-  if (loading) {
-    return <p>Loading...</p>;
-  }
 
   const handleDelete = async (id) => {
     try {
@@ -108,8 +105,8 @@ export default function WebDesignCardDetails() {
         Delete
       </button>
       {/* <Link to={`/character/edit/${webDesign._id}`}>
-        <button>Edit Character</button>
-      </Link> */}
+          <button>Edit Character</button>
+        </Link> */}
       <br />
       <button>
         <a href="/profile">Back to profile</a>

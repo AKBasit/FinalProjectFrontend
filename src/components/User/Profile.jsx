@@ -3,9 +3,11 @@ import { UserContext } from "../../contexts/UserContext";
 import { Link } from "react-router-dom";
 import ProfileHeader from "../ProfileComponents/ProfileHeader";
 import WebDesignList from "../List/WebDesignList";
+import FontList from "../List/FontList";
+import ImageList from "../List/ImageList";
 
 export default function Profile() {
-  const { user, handleLogout } = useContext(UserContext);
+  const { handleLogout } = useContext(UserContext);
   return (
     <div>
       <ProfileHeader />
@@ -24,6 +26,8 @@ export default function Profile() {
         </Link>
       </div>
       <WebDesignList />
+      <FontList />
+      <ImageList />
     </div>
   );
 }
