@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function ImageCardDetails() {
   const { imageId } = useParams();
@@ -90,7 +90,7 @@ export default function ImageCardDetails() {
       <img src={imageDetail.imageUrl} />
       {/* If the function onDelete was sent, then show the button else (:) show nothing */}
       <button onClick={() => handleChangeShared(imageDetail)}>
-        {imageDetail.shared ? "It is Shared" : "Share"}
+        {imageDetail.shared ? "Unshare" : "Share"}
       </button>
       <br />
       <button
@@ -104,6 +104,10 @@ export default function ImageCardDetails() {
       {/* <Link to={`/character/edit/${webDesign._id}`}>
           <button>Edit Character</button>
         </Link> */}
+      <br />
+      <Link to={`/image/update/${imageDetail._id}`}>
+        <button>Edit Image</button>
+      </Link>
       <br />
       <button>
         <a href="/profile">Back to profile</a>

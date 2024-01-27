@@ -2,41 +2,41 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-function FontUpdate() {
+function ImageUpdate() {
   const [name, setName] = useState("");
-  const [license, setLicense] = useState("");
-  const { fontId } = useParams();
+  const [contributor, setContributor] = useState("");
+  const { imageId } = useParams();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchFont = async () => {
+    const fetchImage = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5005/font/${fontId}`
+          `http://localhost:5005/image/${imageId}`
         );
-        const foundFont = response.data.data; // Adjust this based on your API response structure
-        console.log("found font", foundFont);
-        setName(foundFont.name);
-        setLicense(foundFont.license);
+        const foundImage = response.data.data; // Adjust this based on your API response structure
+        console.log("found image", foundImage);
+        setName(foundImage.name);
+        setContributor(foundImage.contributor);
       } catch (err) {
         console.log(err);
       }
     };
-    fetchFont();
-  }, [fontId]);
+    fetchImage();
+  }, [imageId]);
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    const updatedFont = {
+    const updatedImage = {
       name: name,
-      license: license,
+      contributor: contributor,
     };
 
     try {
       const response = await axios.put(
-        `http://localhost:5005/font/${fontId}`,
-        updatedFont
+        `http://localhost:5005/image/${imageId}`,
+        updatedImage
       );
       console.log(response.data);
       navigate("/profile");
@@ -47,7 +47,7 @@ function FontUpdate() {
 
   return (
     <div>
-      <h2>Update Font</h2>
+      <h2>Update Image</h2>
       <form onSubmit={handleUpdate}>
         <label>
           Name:
@@ -60,12 +60,12 @@ function FontUpdate() {
           />
         </label>
         <label>
-          license:
+          Contributor:
           <input
-            value={license}
-            placeholder="license"
+            value={contributor}
+            placeholder="contributor"
             onChange={(event) => {
-              setLicense(event.target.value);
+              setContributor(event.target.value);
             }}
           />
         </label>
@@ -74,4 +74,4 @@ function FontUpdate() {
     </div>
   );
 }
-export default FontUpdate;
+export default ImageUpdate;
