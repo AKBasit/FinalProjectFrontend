@@ -16,6 +16,9 @@ import WebDesignCardDetails from "./components/ReadForUser/WebDesignCardDetails"
 import ImageCardDetails from "./components/ReadForUser/ImageCardDetails";
 import FontCardDetails from "./components/ReadForUser/FontCardDetails";
 import WebDesignUpdate from "./components/UpdateUserCards/WebDesignUpdate";
+import CollectiveFontCardDetails from "./components/ReadForCollective/CollectiveFontCardDetail";
+import CollectiveWebDesignCardDetails from "./components/ReadForCollective/CollectiveWebDesignCardDetail";
+import CollectiveImageCardDetails from "./components/ReadForCollective/CollectiveImageCardDetail";
 
 function App() {
   return (
@@ -27,17 +30,32 @@ function App() {
         <Route path="/createWebdesigns" element={<CreateWebDesigns />} />
         <Route path="/createFonts" element={<CreateFonts />} />
         <Route path="/createImages" element={<CreateImages />} />
+
         <Route
           path="/collectiveImageLibrary"
           element={<CollectiveImageLibrary />}
         />
         <Route
+          path="/image/shared/:imageId"
+          element={<CollectiveImageCardDetails />}
+        />
+
+        <Route
           path="/collectiveFontLibrary"
           element={<CollectiveFontLibrary />}
         />
         <Route
+          path="/font/shared/:fontId"
+          element={<CollectiveFontCardDetails />}
+        />
+
+        <Route
           path="/collectiveWebDesignLibrary"
           element={<CollectiveWebDesignLibrary />}
+        />
+        <Route
+          path="/web-design/shared/:webDesignId"
+          element={<CollectiveWebDesignCardDetails />}
         />
 
         <Route
