@@ -31,25 +31,27 @@ export default function ImageList() {
   //   setimages(mappedimages);
   // };
   return (
-    <div className="">
-      {images &&
-        images.map((image) => {
-          return (
-            <div key={image._id}>
-              <Link to={`/image/${image.id}`}>
-                <img
-                  src={image.imageUrl}
-                  alt={image.name}
-                  style={{
-                    objectFit: "cover",
-                    maxWidth: "100%",
-                    height: "100%",
-                  }}
-                />
-              </Link>
-            </div>
-          );
-        })}
+    <div className="flex justify-between">
+      <div className="grid grid-cols-4 gap-5">
+        {images &&
+          images.map((image) => {
+            return (
+              <div key={image._id}>
+                <Link to={`/image/${image._id}`}>
+                  <img
+                    src={image.imageUrl}
+                    alt={image.name}
+                    style={{
+                      objectFit: "cover",
+                      maxWidth: "100%",
+                      height: "100%",
+                    }}
+                  />
+                </Link>
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 }
