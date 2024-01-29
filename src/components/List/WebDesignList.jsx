@@ -23,21 +23,17 @@ export default function WebDesignList() {
   }, []);
 
   return (
-    <div className="flex justify-between">
-      <div className="grid grid-cols-4 gap-5">
+    <div className="flex justify-center">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {webDesigns &&
           webDesigns.map((webDesign) => {
             return (
-              <div key={webDesign._id}>
+              <div key={webDesign._id} className="w-full max-w-sm rounded-lg">
                 <Link to={`/web-design/${webDesign._id}`}>
                   <img
                     src={webDesign.imageUrl}
                     alt={webDesign.name}
-                    style={{
-                      objectFit: "cover",
-                      maxWidth: "100%",
-                      height: "100%",
-                    }}
+                    className="h-auto max-w-full rounded-lg p-2 rounded-t-lg hover:scale-105 active:scale-65 hover:brightness-75"
                   />
                 </Link>
               </div>

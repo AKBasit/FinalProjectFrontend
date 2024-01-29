@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import Header from "../Layout/Header";
 // import { PageLoader } from "../utilities/PageLoader";
 
 export default function WebDesignCardDetails() {
@@ -87,35 +88,53 @@ export default function WebDesignCardDetails() {
   };
 
   return (
-    <div className="card" key={webDesignDetail._id}>
-      <h3>{webDesignDetail.name}</h3>
-      <h6>{webDesignDetail.description}</h6>
-      <img src={webDesignDetail.imageUrl} />
-      {/* If the function onDelete was sent, then show the button else (:) show nothing */}
-      <button onClick={() => handleChangeShared(webDesignDetail)}>
-        {webDesignDetail.shared ? "Unshare" : "Share"}
-      </button>
-      <br />
-      <button
-        onClick={() => {
-          handleDelete(webDesignDetail._id);
-        }}
-        className="py-4"
-      >
-        Delete
-      </button>
-      {/* <Link to={`/character/edit/${webDesign._id}`}>
-          <button>Edit Character</button>
-        </Link> */}
-      <br />
-      {/* Link to the update page with the web design ID */}
-      <Link to={`/web-design/update/${webDesignDetail._id}`}>
-        <button>Edit Web Design</button>
-      </Link>
-      <br />
-      <button>
-        <a href="/profile">Back to profile</a>
-      </button>
+    <div>
+      <div>
+        <Header />
+      </div>
+
+      <div className="px-4 my-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <div
+          className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12"
+          key={webDesignDetail._id}
+        >
+          <img
+            src={webDesignDetail.imageUrl}
+            className="bg-gray-300 bg-center bg-cover rounded-lg shadow-md"
+          />
+          <div className="">
+            <div className="flex justify-between">
+              <h3 className="py-8 font-bold tracking-wide text-3xl text-left text-gray-800 uppercase">
+                {webDesignDetail.name}
+              </h3>
+              <div className="py-8">
+                <button
+                  onClick={() => handleChangeShared(webDesignDetail)}
+                  className="px-4 mx-3 border-[1px] font-semibold text-xs border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-gray-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur"
+                >
+                  {webDesignDetail.shared ? "Unshare" : "Share"}
+                </button>
+                <Link to={`/web-design/update/${webDesignDetail._id}`}>
+                  <button className="px-4 mx-3 my-1 border-[1px] font-semibold text-xs border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-gray-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
+                    Edit
+                  </button>
+                </Link>
+                <button
+                  onClick={() => {
+                    handleDelete(webDesignDetail._id);
+                  }}
+                  className="px-4 mx-3 border-[1px] font-semibold text-xs border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-gray-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+            <div className="mb-16 text-xl text-gray-700 sm:mx-auto text-left">
+              <h6>{webDesignDetail.description}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

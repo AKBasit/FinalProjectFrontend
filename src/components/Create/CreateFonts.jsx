@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 // import axios from "axios";
 import service from "../../services/file-font-upload.service";
 import { hourglass } from "ldrs";
+import { FiLogIn } from "react-icons/fi";
+import Header from "../Layout/Header";
 
 hourglass.register();
 
@@ -69,37 +71,100 @@ export default function CreateFonts() {
     );
   } else {
     return (
-      <form onSubmit={handleSubmit}>
-        <label>
-          Font Name:
-          <input
-            name="name"
-            value={name}
-            type="text"
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
-        </label>
+      <div>
+        <Header />
+        <svg
+          id="sw-js-blob-svg"
+          viewBox="0 0 100 100"
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+          className="w-1/3 flex mx-auto opacity-10 absolute -z-9 left-72 top-48 -translate-x-[50%] -translate-y-[50%]"
+        >
+          {" "}
+          <defs>
+            {" "}
+            <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">
+              {" "}
+              <stop
+                id="stop1"
+                stopColor="rgba(255, 113.248, 46.159, 1)"
+                offset="0%"
+              ></stop>{" "}
+              <stop
+                id="stop2"
+                stopColor="rgba(172.199, 23.125, 255, 1)"
+                offset="100%"
+              ></stop>{" "}
+            </linearGradient>{" "}
+          </defs>{" "}
+          <path
+            fill="url(#sw-gradient)"
+            d="M25.9,-30.7C33.6,-24.4,39.8,-16.3,41.9,-7C44,2.3,42.1,12.7,37.2,21.9C32.4,31,24.7,38.8,15.8,40.9C6.9,43.1,-3.1,39.5,-11.9,35.2C-20.7,30.9,-28.4,25.9,-33.9,18.5C-39.3,11.2,-42.6,1.5,-41.8,-8.1C-40.9,-17.6,-35.8,-27.2,-28.2,-33.4C-20.5,-39.6,-10.3,-42.6,-0.6,-41.9C9.1,-41.2,18.2,-36.9,25.9,-30.7Z"
+            width="100%"
+            height="100%"
+            transform="translate(50 50)"
+            strokeWidth="0"
+            stroke="url(#sw-gradient)"
+          ></path>{" "}
+        </svg>
+        <form onSubmit={handleSubmit} className="max-w-lg mx-auto mt-44">
+          <label className="block mb-2 text-xl font-medium text-gray-900 ">
+            Font Name:
+            <input
+              name="name"
+              value={name}
+              type="text"
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              className="block w-full mt-2 p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500"
+            />
+          </label>
 
-        <label>
-          Font License:
-          <input
-            name="license"
-            value={license}
-            type="text"
-            onChange={(e) => {
-              setLicense(e.target.value);
-            }}
-          />
-        </label>
+          <label className="block mt-6 text-xl font-medium text-gray-900">
+            Font License:
+            <input
+              name="license"
+              value={license}
+              type="text"
+              onChange={(e) => {
+                setLicense(e.target.value);
+              }}
+              className="block mt-2 w-full p-8 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500"
+            />
+          </label>
 
-        <label>
-          Font Image:
-          <input type="file" onChange={(e) => handleFileUpload(e)} />
-        </label>
-        <button className="">Create Font</button>
-      </form>
+          <label className="block mt-6 text-xl font-medium text-gray-900">
+            Font Image:
+            <input
+              type="file"
+              onChange={(e) => handleFileUpload(e)}
+              className="block mt-2 focus:outline-none w-full text-xl text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 p-2"
+            />
+          </label>
+          <button
+            className={`
+        relative z-0 flex mx-auto items-center gap-2 overflow-hidden rounded-lg border-[1px] 
+        border-indigo-600 px-4 py-2 font-semibold
+        uppercase text-indigo-800 transition-all duration-500 mt-12
+        
+        before:absolute before:inset-0
+        before:-z-10 before:translate-x-[150%]
+        before:translate-y-[150%] before:scale-[2.5]
+        before:rounded-[100%] before:bg-indigo-600
+        before:transition-transform before:duration-1000
+        before:content-[""]
+
+        hover:scale-105 hover:text-gray-200
+        hover:before:translate-x-[0%]
+        hover:before:translate-y-[0%]
+        active:scale-95`}
+          >
+            <FiLogIn />
+            Create Font
+          </button>
+        </form>
+      </div>
     );
   }
 }
