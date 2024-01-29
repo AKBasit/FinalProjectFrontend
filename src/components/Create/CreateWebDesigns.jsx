@@ -1,10 +1,12 @@
-import { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { UserContext } from "../contexts/UserContext";
 // import axios from "axios";
 import service from "../../services/file-upload.service";
 import { hourglass } from "ldrs";
+import Header from "../Layout/Header";
+import { FiLogIn } from "react-icons/fi";
+import blob from "../../../public/blob.mov";
 
 hourglass.register();
 
@@ -103,45 +105,74 @@ export default function CreateWebDesigns() {
     );
   } else {
     return (
-      <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
-        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-          Web Design Name:
-          <input
-            name="name"
-            value={name}
-            type="text"
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-            className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500"
-          />
-        </label>
+      <div>
+        <Header />
+        <video
+          src={blob}
+          width="750"
+          height="750"
+          autoPlay
+          loop
+          className="opacity-30 w-1/3 flex mx-auto  absolute -z-9 left-96 top-48 -translate-x-[50%] -translate-y-[50%]"
+        />
+        <form onSubmit={handleSubmit} className="max-w-lg mx-auto mt-44">
+          <label className="block mb-2 text-xl font-medium text-gray-900 ">
+            Web Design Name:
+            <input
+              name="name"
+              value={name}
+              type="text"
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              className="block w-full mt-2 p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500"
+            />
+          </label>
 
-        <label className="block mb-2 text-sm font-medium text-gray-900">
-          Web Design Description:
-          <input
-            name="description"
-            value={description}
-            type="text"
-            onChange={(e) => {
-              setDescription(e.target.value);
-            }}
-            className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500"
-          />
-        </label>
+          <label className="block mt-6 text-xl font-medium text-gray-900">
+            Web Design Description:
+            <input
+              name="description"
+              value={description}
+              type="text"
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
+              className="block mt-2 w-full p-8 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500"
+            />
+          </label>
 
-        <label className="block mb-2 text-sm font-medium text-gray-900">
-          Web Design Image:
-          <input
-            type="file"
-            onChange={(e) => handleFileUpload(e)}
-            className="block focus:outline-none w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 "
-          />
-        </label>
-        <button className="relative my-4 flex justify-center mx-auto scale-100 text-xl overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 from-40% to-indigo-400 px-4 py-2 font-semibold text-gray-100 transition-transform hover:scale-105 active:scale-95">
-          Create Web Design
-        </button>
-      </form>
+          <label className="block mt-6 text-xl font-medium text-gray-900">
+            Web Design Image:
+            <input
+              type="file"
+              onChange={(e) => handleFileUpload(e)}
+              className="block mt-2 focus:outline-none w-full text-xl text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 p-2"
+            />
+          </label>
+          <button
+            className={`
+        relative z-0 flex mx-auto items-center gap-2 overflow-hidden rounded-lg border-[1px] 
+        border-indigo-600 px-4 py-2 font-semibold
+        uppercase text-indigo-800 transition-all duration-500 mt-12
+        
+        before:absolute before:inset-0
+        before:-z-10 before:translate-x-[150%]
+        before:translate-y-[150%] before:scale-[2.5]
+        before:rounded-[100%] before:bg-indigo-600
+        before:transition-transform before:duration-1000
+        before:content-[""]
+
+        hover:scale-105 hover:text-gray-200
+        hover:before:translate-x-[0%]
+        hover:before:translate-y-[0%]
+        active:scale-95`}
+          >
+            <FiLogIn />
+            Create Web Design
+          </button>
+        </form>
+      </div>
     );
   }
 }

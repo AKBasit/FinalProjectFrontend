@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { useAnimate, motion } from "framer-motion";
 import outward from "../../../public/Outward.png";
 import mono from "../../../public/Mono.png";
 import espinosa from "../../../public/Espinosa.png";
+import { Link } from "react-router-dom";
 
 export default function ProfileHeader() {
   const { user } = useContext(UserContext);
@@ -30,7 +32,7 @@ export default function ProfileHeader() {
             </svg>
           </div>
         </a> */}
-        <h2 className="mb-4 mt-32 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+        <h2 className="mb-4 mt-28 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
           Welcome to your profile{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-tl from-red-700 via-violet-500 to-violet-600">
             {user && user.username}
@@ -38,8 +40,26 @@ export default function ProfileHeader() {
         </h2>
         <p className="text-base text-gray-700 md:text-lg sm:px-4">
           Your tailored database playground! Craft, shape, and explore
-          components for your creative endeavors.
+          components for your creative endeavors right here:
         </p>
+        <motion.div className="py-10 mx-auto flex">
+          <Link className="" to="/createWebdesigns">
+            <button className="px-4 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-gray-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
+              {" "}
+              Create Web Design
+            </button>
+          </Link>
+          <Link className="mx-10" to="/createFonts">
+            <button className="px-4 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-gray-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
+              Create Font
+            </button>
+          </Link>
+          <Link className="" to="/createImages">
+            <button className="px-4 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-gray-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
+              Create Image
+            </button>
+          </Link>
+        </motion.div>
         <hr className="w-full my-8 border-gray-300" />
       </div>
       <div className="flex items-center justify-center mt-12 -mx-4 lg:pl-8 max-w-screen-2xl">

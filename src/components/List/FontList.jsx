@@ -21,21 +21,17 @@ export default function FontList() {
   }, []);
 
   return (
-    <div className="flex justify-between">
-      <div className="grid grid-cols-4 gap-5">
+    <div className="flex justify-center">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {fonts &&
           fonts.map((font) => {
             return (
-              <div key={font._id}>
+              <div key={font._id} className="w-full max-w-sm rounded-lg">
                 <Link to={`/font/${font._id}`}>
                   <img
                     src={font.imageUrl}
                     alt={font.name}
-                    style={{
-                      objectFit: "cover",
-                      maxWidth: "100%",
-                      height: "100%",
-                    }}
+                    className="h-auto max-w-full rounded-lg p-2 rounded-t-lg hover:scale-105 active:scale-65 hover:brightness-75"
                   />
                 </Link>
               </div>

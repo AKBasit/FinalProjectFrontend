@@ -1,7 +1,8 @@
 import { FiMenu, FiArrowUpRight } from "react-icons/fi";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useAnimate, motion } from "framer-motion";
 import evoke from "../../../public//Evoke.png";
+import { UserContext } from "../../contexts/UserContext";
 
 const Header = () => {
   return (
@@ -14,6 +15,7 @@ const Header = () => {
 const GlassNavigation = () => {
   const [hovered, setHovered] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { handleLogout } = useContext(UserContext);
 
   const [scope, animate] = useAnimate();
   const navRef = useRef(null);
@@ -42,26 +44,35 @@ const GlassNavigation = () => {
   }, []);
 
   return (
-    <nav
-      ref={navRef}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        cursor: hovered ? "none" : "auto",
-      }}
-      className="glass-nav fixed left-0 right-0 top-0 z-10 mx-auto max-w-6xl overflow-hidden border-[1px] border-gray/10 bg-gradient-to-br from-gray/20 to-gray/5 backdrop-blur md:left-6 md:right-6 md:top-6 md:rounded-2xl"
-    >
-      <div className="glass-nav flex items-center justify-between px-5 py-5">
-        <Cursor hovered={hovered} scope={scope} />
+    <div>
+      <nav
+        ref={navRef}
+        onMouseLeave={() => setHovered(false)}
+        style={{
+          cursor: hovered ? "none" : "auto",
+        }}
+        className="glass-nav fixed left-0 right-0 top-0 z-10 mx-auto max-w-5xl overflow-hidden border-[1px] border-gray/10 bg-gradient-to-br from-gray/20 to-gray/5 backdrop-blur md:left-6 md:right-6 md:top-6 md:rounded-2xl"
+      >
+        <div className="glass-nav flex items-center justify-between px-5 py-5">
+          <Cursor hovered={hovered} scope={scope} />
 
-        <Links />
+          <Links />
 
-        <Logo />
+          <Logo />
 
-        <Buttons setMenuOpen={setMenuOpen} />
+          <Buttons setMenuOpen={setMenuOpen} />
+        </div>
+        <MobileMenu menuOpen={menuOpen} />
+      </nav>
+      <div className="fixed top-[26px] right-[310px] mt-5 z-20">
+        <button
+          onClick={handleLogout}
+          className="scale-100 text-lg overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 from-40% to-indigo-400 px-4 py-2 font-semibold text-gray-100 transition-transform hover:scale-105 active:scale-95"
+        >
+          Logout
+        </button>
       </div>
-
-      <MobileMenu menuOpen={menuOpen} />
-    </nav>
+    </div>
   );
 };
 
@@ -96,11 +107,11 @@ const Links = () => (
     <GlassLink text="Home" />
     <button className="group relative font-semibold text-xl scale-100 overflow-hidden rounded-lg px-4 py-2 transition-transform hover:scale-105 active:scale-95">
       <a
-        href="/collectiveWebDesignLibrary"
+        href="/profile"
         className="relative z-10 text-gray/90 transition-colors group-hover:text-gray"
       >
         {/* change a ref to WD */}
-        Web-Design Library
+        Profile
       </a>
       <span className="absolute inset-0 z-0 bg-gradient-to-br from-gray/20 to-gray/5 opacity-0 transition-opacity group-hover:opacity-100" />
     </button>
@@ -167,11 +178,22 @@ const DashboardButton = () => {
     <>
       <button className="group relative font-semibold text-xl scale-100 overflow-hidden rounded-lg px-4 py-2 transition-transform hover:scale-105 active:scale-95">
         <a
+          href="/collectiveWebDesignLibrary"
+          className="relative z-10 text-gray/90 transition-colors group-hover:text-gray"
+        >
+          {/* change a ref to WD */}
+          Web Designs
+        </a>
+        <span className="absolute inset-0 z-0 bg-gradient-to-br from-gray/20 to-gray/5 opacity-0 transition-opacity group-hover:opacity-100" />
+      </button>
+
+      <button className="group relative font-semibold text-xl scale-100 overflow-hidden rounded-lg px-4 py-2 transition-transform hover:scale-105 active:scale-95">
+        <a
           href="/collectiveImageLibrary"
           className="relative z-10 text-gray/90 transition-colors group-hover:text-gray"
         >
           {/* change a ref to Image */}
-          Image Library
+          Images
         </a>
         <span className="absolute inset-0 z-0 bg-gradient-to-br from-gray/20 to-gray/5 opacity-0 transition-opacity group-hover:opacity-100" />
       </button>
@@ -182,7 +204,7 @@ const DashboardButton = () => {
           className="relative z-10 text-gray/90 transition-colors group-hover:text-gray"
         >
           {/* change a ref to Font */}
-          Font Library
+          Fonts
         </a>
         <span className="absolute inset-0 z-0 bg-gradient-to-br from-gray/20 to-gray/5 opacity-0 transition-opacity group-hover:opacity-100" />
       </button>
