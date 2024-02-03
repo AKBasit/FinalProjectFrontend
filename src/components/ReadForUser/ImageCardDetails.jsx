@@ -15,7 +15,9 @@ export default function ImageCardDetails() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:5005/image");
+      const response = await axios.get(
+        `http://localhost:5005/image/${imageId}`
+      );
       setImageDetail(response.data);
     } catch (error) {
       console.error("Error fetching imageDetail data:", error);
@@ -89,8 +91,10 @@ export default function ImageCardDetails() {
       <div>
         <Header />
       </div>
-
-      <div className="px-4 my-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+      <h2 className="flex justify-center mt-44 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+        Your image.
+      </h2>
+      <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         <div
           className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12"
           key={imageDetail._id}

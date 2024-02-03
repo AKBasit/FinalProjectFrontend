@@ -32,10 +32,10 @@ export default function FontGallery() {
               </g>
             </svg>
           </div>
-          <h5 className="my-4 text-4xl font-extrabold leading-none">
+          <h5 className="my-4 text-4xl font-extrabold leading-none text-stone-800">
             Font Tool
           </h5>
-          <p className="mb-6 text-gray-900">
+          <p className="mb-6 text-stone-600">
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
             quae explicabo. Sed ut perspiciatis unde omnis iste natus error sit

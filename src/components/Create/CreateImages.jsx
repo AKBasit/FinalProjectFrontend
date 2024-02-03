@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { UserContext } from "../contexts/UserContext";
 // import axios from "axios";
@@ -6,6 +6,7 @@ import service from "../../services/file-image-upload.service";
 import { hourglass } from "ldrs";
 import { FiLogIn } from "react-icons/fi";
 import Header from "../Layout/Header";
+import { UserContext } from "../../contexts/UserContext";
 
 hourglass.register();
 
@@ -15,6 +16,7 @@ export default function CreateImages() {
   const [name, setName] = useState("");
   const [contributor, setContributor] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const { user } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -46,6 +48,7 @@ export default function CreateImages() {
         name,
         contributor,
         imageUrl,
+        owner: user ? user.id : null,
       });
 
       // Reset the form

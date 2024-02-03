@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Header from "../Layout/Header";
 // import { PageLoader } from "../utilities/PageLoader"; when you select a specfic Image on the collective library
 export default function CollectiveImageCardDetails() {
   const { imageId } = useParams();
@@ -11,7 +12,9 @@ export default function CollectiveImageCardDetails() {
   }, []);
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:5005/image");
+      const response = await axios.get(
+        `http://localhost:5005/image/${imageId}`
+      );
       setCollectiveImageDetail(response.data);
     } catch (error) {
       console.error("Error fetching collectiveImageDetail data:", error);
@@ -34,16 +37,31 @@ export default function CollectiveImageCardDetails() {
     fetchWebDesign();
   }, [imageId]);
   return (
-    <div key={collectiveImageDetail._id}>
-      <h1>{collectiveImageDetail.name}</h1>
-      <h2>{collectiveImageDetail.contributor}</h2>
-      <img src={collectiveImageDetail.imageUrl} />
-      <button>
-        <a href="/profile">Profile</a>
-      </button>
-      <button>
-        <a href="/collectiveImageLibrary">Image Library</a>
-      </button>
+    <div>
+      <div>
+        <Header />
+      </div>
+      <div className="px-4 my-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <div
+          className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12"
+          key={collectiveImageDetail._id}
+        >
+          <img
+            src={collectiveImageDetail.imageUrl}
+            className="bg-gray-300 bg-center bg-cover rounded-lg shadow-md"
+          />
+          <div className="">
+            <div className="flex justify-between">
+              <h3 className="py-8 font-bold tracking-wide text-3xl text-left text-gray-800 uppercase">
+                {collectiveImageDetail.name}
+              </h3>
+            </div>
+            <div className="mb-16 text-xl text-gray-700 sm:mx-auto text-left">
+              <h6>{collectiveImageDetail.contributor}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

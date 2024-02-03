@@ -1,25 +1,32 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import service from "../../services/file-image-upload.service";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function ImageList() {
   // const { images, setimages, getimages } =
   //   useContext(imageContext);
-
+  const { user } = useContext(UserContext);
   const [images, setImages] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await service.getImages();
+        const data = await service.getImages(user);
+        const filteredData = data.filter((e) => {
+          if (e.owner === user._id) {
+            return e;
+          }
+        });
+        console.log(filteredData);
+        console.log(data);
         setImages(data);
       } catch (error) {
         console.error(error);
       }
     };
-
     fetchData();
-  }, []);
+  }, [user]);
 
   // const handleDone = (imageId) => {
   //   const mappedimages = images.map((elem) => {
@@ -32,7 +39,7 @@ export default function ImageList() {
   // };
   return (
     <div className="flex justify-center">
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {images &&
           images.map((image) => {
             return (

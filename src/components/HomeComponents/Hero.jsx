@@ -75,11 +75,11 @@ function Copy({ scrollYProgress }) {
       }}
       className="absolute px-8 w-full h-screen z-20 flex flex-col items-center justify-center"
     >
-      <h1 className="text-stone-950 text-5xl md:text-[150px] font-bold text-center max-w-7xl">
-        A creative tool for your mind
+      <h1 className="text-stone-800 text-5xl md:text-[150px] font-bold text-center max-w-7xl py-4">
+        A creative tool to Evoke your mind
       </h1>
       <p className="text-stone-600 text-md md:text-lg text-center max-w-xl my-6">
-        Discover your unique identity with Creativehub—where we unleash your
+        Discover your unique identity with Evoke—where we unleash your
         creativity through essential tools and unwavering support. Elevate your
         portfolio effortlessly!
       </p>

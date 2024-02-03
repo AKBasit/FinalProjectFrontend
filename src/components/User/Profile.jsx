@@ -33,7 +33,7 @@ export default function Profile() {
       </div>
 
       <div className="my-14">
-        <FontList />
+        <ImageList />
       </div>
       <>
         <div className="w-3/5 max-w-[850px] min-w-[400px] aspect-square border-[8px] border-slate-100 rounded-se-full absolute -z-10 left-20 top-100 -translate-x-[50%] -translate-y-[50%]" />
@@ -41,7 +41,7 @@ export default function Profile() {
       </>
 
       <div className="my-14">
-        <ImageList />
+        <FontList />
       </div>
     </div>
   );

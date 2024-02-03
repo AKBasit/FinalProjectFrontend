@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { UserContext } from "../contexts/UserContext";
 // import axios from "axios";
 import service from "../../services/file-upload.service";
 import { hourglass } from "ldrs";
 import Header from "../Layout/Header";
 import { FiLogIn } from "react-icons/fi";
 import blob from "../../../public/blob.mov";
+import { UserContext } from "../../contexts/UserContext";
 
 hourglass.register();
 
@@ -16,6 +16,7 @@ export default function CreateWebDesigns() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const { user } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -47,6 +48,7 @@ export default function CreateWebDesigns() {
         name,
         description,
         imageUrl,
+        owner: user ? user.id : null,
       });
 
       // Reset the form

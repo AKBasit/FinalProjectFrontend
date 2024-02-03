@@ -1,5 +1,4 @@
 // src/services/file-upload.service.js
-
 import axios from "axios";
 
 const api = axios.create({
@@ -7,16 +6,19 @@ const api = axios.create({
   baseURL: "http://localhost:5005/web-design",
   // withCredentials: true // => you might need this option if using cookies and sessions
 });
-
 const errorHandler = (err) => {
   throw err;
 };
 
-const getWebDesigns = async () => {
+const getWebDesigns = async (user) => {
   try {
-    const res = await api.get("/user");
+    console.log(user);
+    const res = await api.get("/user", {
+      headers: { currentUser: user.id },
+    });
     return res.data;
   } catch (err) {
+    console.log(err);
     return errorHandler(err);
   }
 };

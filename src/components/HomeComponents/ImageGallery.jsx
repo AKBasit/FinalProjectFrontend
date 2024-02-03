@@ -20,10 +20,10 @@ export default function ImageGallery() {
             </svg>
           </div>
           <div className="w-1/2 max-w-[800px] min-w-[600px] aspect-square border-[8px] border-slate-100 rounded-full absolute z-0 left-80 top-80 translate-x-[50%] translate-y-[50%]" />
-          <h5 className="my-4 text-4xl font-extrabold leading-none">
+          <h5 className="my-4 text-4xl font-extrabold leading-none text-stone-800">
             Image Library
           </h5>
-          <p className="mb-6 text-gray-900">
+          <p className="mb-6 text-stone-600">
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
             quae explicabo. Sed ut perspiciatis unde omnis iste natus error sit

@@ -32,7 +32,7 @@ export default function ProfileHeader() {
             </svg>
           </div>
         </a> */}
-        <h2 className="mb-4 mt-28 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+        <h2 className="mb-4 mt-28 font-sans text-3xl font-bold tracking-tight text-stone-800 sm:text-4xl sm:leading-none">
           Welcome to your profile{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-tl from-red-700 via-violet-500 to-violet-600">
             {user && user.username}
@@ -44,19 +44,19 @@ export default function ProfileHeader() {
         </p>
         <motion.div className="py-10 mx-auto flex">
           <Link className="" to="/createWebdesigns">
-            <button className="px-4 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-gray-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
+            <button className="px-4 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-stone-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
               {" "}
               Create Web Design
             </button>
           </Link>
-          <Link className="mx-10" to="/createFonts">
-            <button className="px-4 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-gray-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
-              Create Font
+          <Link className="mx-10" to="/createImages">
+            <button className="px-4 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-stone-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
+              Create Image
             </button>
           </Link>
-          <Link className="" to="/createImages">
-            <button className="px-4 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-gray-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
-              Create Image
+          <Link className="" to="/createFonts">
+            <button className="px-4 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-stone-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
+              Create Font
             </button>
           </Link>
         </motion.div>

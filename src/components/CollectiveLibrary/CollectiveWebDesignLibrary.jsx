@@ -18,29 +18,34 @@ const CollectiveWebDesignLibrary = () => {
     }
   };
   return (
-    <div className="flex justify-between">
-      <div className="grid grid-cols-4 gap-5">
-        <button>
-          <a href="/profile">Profile</a>
-        </button>
-        <h1>Collective Webdesign Library</h1>
-        {webDesign.map((webDesign) => {
-          return (
-            <div key={webDesign._id}>
-              <Link to={`/web-design/shared/${webDesign._id}`}>
-                <img
-                  src={webDesign.imageUrl}
-                  alt={webDesign.name}
-                  style={{
-                    objectFit: "cover",
-                    maxWidth: "100%",
-                    height: "100%",
-                  }}
-                />
-              </Link>
-            </div>
-          );
-        })}
+    <div>
+      <Header />
+      <div className="flex-col justify-center">
+        <h2 className="flex justify-center mt-36 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+          Welcome to the collective Web Designs library
+        </h2>
+      </div>
+      <div className="flex justify-center my-[3%]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {webDesign.map((webDesign) => {
+            return (
+              <div key={webDesign._id} className="w-full max-w-sm rounded-lg">
+                <Link to={`/web-design/shared/${webDesign._id}`}>
+                  <img
+                    src={webDesign.imageUrl}
+                    alt={webDesign.name}
+                    style={{
+                      objectFit: "cover",
+                      maxWidth: "100%",
+                      height: "100%",
+                    }}
+                    className="h-auto max-w-full rounded-lg p-2 rounded-t-lg hover:scale-105 active:scale-65 hover:brightness-75"
+                  />
+                </Link>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
