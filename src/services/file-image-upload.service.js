@@ -12,9 +12,11 @@ const errorHandler = (err) => {
   throw err;
 };
 
-const getImages = async () => {
+const getImages = async (user) => {
   try {
-    const res = await api.get("/user");
+    const res = await api.get("/user", {
+      headers: { currentUser: user.id },
+    });
     return res.data;
   } catch (err) {
     return errorHandler(err);

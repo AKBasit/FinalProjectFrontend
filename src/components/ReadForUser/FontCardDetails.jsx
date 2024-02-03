@@ -15,7 +15,7 @@ export default function FontCardDetails() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:5005/font");
+      const response = await axios.get(`http://localhost:5005/font/${fontId}`);
       setFontDetail(response.data);
     } catch (error) {
       console.error("Error fetching font detail data:", error);
@@ -26,7 +26,7 @@ export default function FontCardDetails() {
     const newFont = {
       name: item.name,
       imageUrl: item.imageUrl,
-      description: item.description,
+      license: item.license,
       owner: item.owner,
       shared: !item.shared,
     };
@@ -53,7 +53,7 @@ export default function FontCardDetails() {
         );
         setFontDetail(response.data.data); // Update state with the fetched data as an array
         setLoading(false);
-        console.log(fontDetail);
+        console.log(response.data.data);
       } catch (err) {
         console.log(err);
       }
@@ -89,7 +89,10 @@ export default function FontCardDetails() {
       <div>
         <Header />
       </div>
-      <div className="px-4 my-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+      <h2 className="flex justify-center mt-44 font-sans text-3xl font-bold tracking-tight text-stone-800 sm:text-4xl sm:leading-none">
+        Your Font.
+      </h2>
+      <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         <div
           className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12"
           key={fontDetail._id}
@@ -100,18 +103,18 @@ export default function FontCardDetails() {
           />
           <div className="">
             <div className="flex justify-between">
-              <h3 className="py-8 font-bold tracking-wide text-3xl text-left text-gray-800 uppercase">
+              <h3 className="py-8 font-bold tracking-wide text-3xl text-left text-stone-800 uppercase">
                 {fontDetail.name}
               </h3>
               <div className="py-8">
                 <button
                   onClick={() => handleChangeShared(fontDetail)}
-                  className="px-4 mx-3 border-[1px] font-semibold text-xs border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-gray-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur"
+                  className="px-4 mx-3 border-[1px] font-semibold text-xs border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-stone-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur"
                 >
                   {fontDetail.shared ? "Unshare" : "Share"}
                 </button>
                 <Link to={`/font/update/${fontDetail._id}`}>
-                  <button className="px-4 mx-3 my-1 border-[1px] font-semibold text-xs border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-gray-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
+                  <button className="px-4 mx-3 my-1 border-[1px] font-semibold text-xs border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-stone-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
                     Edit
                   </button>
                 </Link>
@@ -119,7 +122,7 @@ export default function FontCardDetails() {
                   onClick={() => {
                     handleDelete(fontDetail._id);
                   }}
-                  className="px-4 mx-3 border-[1px] font-semibold text-xs border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-gray-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur"
+                  className="px-4 mx-3 border-[1px] font-semibold text-xs border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-stone-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur"
                 >
                   Delete
                 </button>

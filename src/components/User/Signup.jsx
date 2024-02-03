@@ -10,7 +10,7 @@ function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState(0);
+
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
@@ -18,21 +18,19 @@ function Signup() {
   const handleUsername = (event) => setUsername(event.target.value);
   const handleEmail = (event) => setEmail(event.target.value);
   const handlePassword = (event) => setPassword(event.target.value);
-  const handlePhoneNumber = (event) => setPhoneNumber(event.target.value);
-  const handleSignup = (event) => {
+
+  const handleSignup = async (event) => {
     event.preventDefault();
 
-    const requestBody = { username, email, password, phoneNumber };
-    axios
-      .post(`${API_URL}/auth/signup`, requestBody)
-      .then((response) => {
-        console.log(response.data);
-        navigate("/login");
-      })
+    const requestBody = { username, email, password };
 
-      .catch((error) => {
-        setErrorMessage(error.response.data.errorMessage);
-      });
+    try {
+      const response = await axios.post(`${API_URL}/auth/signup`, requestBody);
+      console.log(response.data);
+      navigate("/login");
+    } catch (error) {
+      setErrorMessage(error.response.data.errorMessage);
+    }
   };
 
   return (
@@ -55,6 +53,7 @@ function Signup() {
             </p>
           </div>
         </div>
+
         <div className="bg-white shadow p-4 py-6 sm:p-6 sm:rounded-lg">
           <form onSubmit={handleSignup}>
             <div>
