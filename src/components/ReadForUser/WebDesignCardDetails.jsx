@@ -2,7 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../Layout/Header";
-// import { PageLoader } from "../utilities/PageLoader";
+import { dotWave } from "ldrs";
+
+dotWave.register();
 
 export default function WebDesignCardDetails() {
   const { webDesignId } = useParams();
@@ -54,13 +56,17 @@ export default function WebDesignCardDetails() {
         const response = await axios.get(
           `http://localhost:5005/web-design/${webDesignId}`
         );
-        setWebDesignDetail(response.data.data); // Update state with the fetched data as an array
-        setLoading(false);
-        console.log(response.data.data);
+        // Simulate a 3-second loading delay
+        setTimeout(() => {
+          setWebDesignDetail(response.data.data);
+          setLoading(false);
+          console.log(response.data.data);
+        }, 1500);
       } catch (err) {
         console.log(err);
       }
     };
+
     fetchWebDesign();
   }, [webDesignId]);
 
@@ -99,7 +105,14 @@ export default function WebDesignCardDetails() {
       </h2>
       <div className="px-4  mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         {loading ? (
-          <p>Loading...</p>
+          <div className="flex justify-center py-40">
+            <l-dot-wave
+              className=""
+              size="47"
+              speed="1"
+              color="black"
+            ></l-dot-wave>
+          </div>
         ) : (
           <div
             className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12"
@@ -109,7 +122,7 @@ export default function WebDesignCardDetails() {
               src={webDesignDetail.imageUrl}
               className="bg-gray-300 bg-center bg-cover rounded-lg shadow-md"
             />
-            <div className="">
+            <div>
               <div className="flex justify-between">
                 <h3 className="py-8 font-bold tracking-wide text-3xl text-left text-gray-800 uppercase">
                   {webDesignDetail.name}
@@ -142,7 +155,6 @@ export default function WebDesignCardDetails() {
             </div>
           </div>
         )}
-        ;
       </div>
     </div>
   );

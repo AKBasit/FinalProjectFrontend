@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
-import { useAnimate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import outward from "../../../public/Outward.png";
 import mono from "../../../public/Mono.png";
 import espinosa from "../../../public/Espinosa.png";
@@ -78,7 +78,7 @@ export default function ProfileHeader() {
         <div className="px-3">
           <img
             className="object-cover w-40 h-40 rounded shadow-lg sm:h-64 xl:h-80 sm:w-64 xl:w-80"
-            src="https://images.unsplash.com/photo-1705402423534-108c8312d1e5?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="https://images.unsplash.com/photo-1705651460814-abf3af6eefee?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
           />
         </div>

@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function ImageGallery() {
   return (
     <div className="flex items-center justify-center h-90vh px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8 lg:py-20">
@@ -23,11 +21,11 @@ export default function ImageGallery() {
           <h5 className="my-4 text-4xl font-extrabold leading-none text-stone-800">
             Image Library
           </h5>
-          <p className="mb-6 text-stone-600">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae explicabo. Sed ut perspiciatis unde omnis iste natus error sit
-            voluptatem totam rem aperiam, eaque ipsa quae explicabo.
+          <p className="mb-6 text-xl tracking-wide text-stone-600">
+            Immerse yourself in boundless creativity with our Image Library – a
+            curated collection of stunning visuals spanning diverse themes and
+            styles. Elevate your projects, unlock exclusive resources, and
+            redefine your visual storytelling.
           </p>
           <hr className="mb-5 border-gray-300" />
         </div>
