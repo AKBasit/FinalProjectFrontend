@@ -1,5 +1,4 @@
 import { useScroll, useTransform, motion } from "framer-motion";
-import { AiFillApple, AiFillFileImage } from "react-icons/ai";
 import { useRef } from "react";
 import outward from "../../../public/Outward.png";
 import mono from "../../../public/Mono.png";
@@ -42,8 +41,10 @@ function Nav({ scrollYProgress }) {
       style={{ background }}
       className="px-4 py-2 flex items-center justify-between fixed top-0 left-0 right-0 z-40 transition-colors"
     >
-      <div className="flex items-center gap-2 text-lg text-white">
-        <img src={evoke} />
+      <div className="flex items-center gap-2 text-lg text-black">
+        <h1 className="text-5xl uppercase tracking-widest font-semibold">
+          Evoke
+        </h1>
       </div>
       {isLoggedIn ? (
         <button className="relative scale-100 text-xl overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 from-40% to-indigo-400 px-4 py-2 font-semibold text-gray-100 transition-transform hover:scale-105 active:scale-95">

@@ -21,11 +21,10 @@ export default function WebDesignGallery() {
           <h5 className="my-4 text-4xl font-extrabold leading-none text-stone-800">
             Web Design Inspiration
           </h5>
-          <p className="mb-6 text-stone-700">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae explicabo. Sed ut perspiciatis unde omnis iste natus error sit
-            voluptatem totam rem aperiam, eaque ipsa quae explicabo.
+          <p className="mb-6 text-xl tracking-wide text-stone-700">
+            Elevate your creativity with our curated trendsetting Web Designs
+            for every niche. Join our community at Evoke to unlock exclusive
+            resources and revolutionize your approach to web design!
           </p>
           <hr className="mb-5 border-gray-300" />
         </div>

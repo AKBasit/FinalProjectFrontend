@@ -35,11 +35,11 @@ export default function FontGallery() {
           <h5 className="my-4 text-4xl font-extrabold leading-none text-stone-800">
             Font Tool
           </h5>
-          <p className="mb-6 text-stone-600">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae explicabo. Sed ut perspiciatis unde omnis iste natus error sit
-            voluptatem totam rem aperiam, eaque ipsa quae explicabo.
+          <p className="mb-6 text-xl tracking-wide text-stone-600">
+            Transform your designs with our Font Showcase! Explore an extensive
+            collection of fonts to elevate your typography game. Visit [Your
+            Website] to discover unique typefaces, unlock exclusive resources,
+            and redefine your creative expressions!
           </p>
           <hr className="mb-5 border-gray-300" />
         </div>

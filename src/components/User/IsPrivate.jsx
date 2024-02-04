@@ -6,7 +6,11 @@ function IsPrivate({ children }) {
   const { isLoading, isLoggedIn } = useContext(UserContext);
 
   if (isLoading) {
-    return <p>Imagine a cool loading spinner...</p>;
+    return (
+      <p className="flex justify-center py-96 h-screen bg-black/5">
+        Imagine a cool loading spinner...
+      </p>
+    );
   }
   if (!isLoggedIn) {
     return <Navigate to="/login" />;

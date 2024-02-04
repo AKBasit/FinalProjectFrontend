@@ -96,10 +96,9 @@ const Cursor = ({ hovered, scope }) => {
 };
 
 const Logo = () => (
-  <img
-    className="pointer-events-none relative left-0 top-[50%] z-10 text-4xl font-gray text-gray mix-blend-overlay md:absolute md:left-[50%] md:-translate-x-[50%] md:-translate-y-[50%]"
-    src={evoke}
-  ></img>
+  <h1 className="text-5xl uppercase pl-28 tracking-widest font-semibold">
+    Evoke
+  </h1>
 );
 
 const Links = () => (
