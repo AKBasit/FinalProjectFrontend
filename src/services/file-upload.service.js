@@ -27,7 +27,7 @@ const getWebDesigns = async (user) => {
 
 const uploadWebDesign = async (file) => {
   try {
-    const res = await api.post("/upload", file);
+    const res = await api.post(`${API_URL}/upload`, file);
     return res.data;
   } catch (err) {
     return errorHandler(err);
