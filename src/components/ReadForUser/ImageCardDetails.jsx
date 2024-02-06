@@ -5,6 +5,7 @@ import Header from "../Layout/Header";
 import { dotWave } from "ldrs";
 
 dotWave.register();
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function ImageCardDetails() {
   const { imageId } = useParams();
@@ -18,9 +19,7 @@ export default function ImageCardDetails() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:5005/image/${imageId}`
-      );
+      const response = await axios.get(`${API_URL}/image/${imageId}`);
       setImageDetail(response.data);
     } catch (error) {
       console.error("Error fetching imageDetail data:", error);
@@ -38,7 +37,7 @@ export default function ImageCardDetails() {
 
     try {
       const response = await axios.put(
-        "http://localhost:5005/image/shared/" + item._id,
+        `${API_URL}/image/shared/` + item._id,
         newImage
       );
       console.log(response);
@@ -53,9 +52,7 @@ export default function ImageCardDetails() {
     const fetchImage = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
-          `http://localhost:5005/image/${imageId}`
-        );
+        const response = await axios.get(`${API_URL}/image/${imageId}`);
         setTimeout(() => {
           setImageDetail(response.data.data);
           setLoading(false);
@@ -69,22 +66,10 @@ export default function ImageCardDetails() {
     fetchImage();
   }, [imageId]);
 
-  //   useEffect(() => {
-  //     if (webDesigns) {
-  //       const webDesignData = webDesign.find((element) => {
-  //         if (element.id == imageId) {
-  //           return true;
-  //         }
-  //       });
-  //       console.log(webDesignData);
-  //       setImageDetail(webDesignData);
-  //     }
-  //   }, [imageId]);
-
   const handleDelete = async (id) => {
     try {
       //make an axios call to the back to delete the todo as well
-      const { data } = await axios.delete(`http://localhost:5005/image/${id}`);
+      const { data } = await axios.delete(`${API_URL}/image/${id}`);
       console.log("image was deleted ", data);
       navigate(-1);
     } catch (err) {

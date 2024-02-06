@@ -4,6 +4,8 @@ import { FiLogIn } from "react-icons/fi";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../Layout/Header";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function FontUpdate() {
   const [name, setName] = useState("");
   const [license, setLicense] = useState("");
@@ -14,9 +16,7 @@ function FontUpdate() {
   useEffect(() => {
     const fetchFont = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5005/font/${fontId}`
-        );
+        const response = await axios.get(`${API_URL}/font/${fontId}`);
         const foundFont = response.data.data; // Adjust this based on your API response structure
         console.log("found font", foundFont);
         setName(foundFont.name);
@@ -37,7 +37,7 @@ function FontUpdate() {
 
     try {
       const response = await axios.put(
-        `http://localhost:5005/font/${fontId}`,
+        `${API_URL}/font/${fontId}`,
         updatedFont
       );
       console.log(response.data);

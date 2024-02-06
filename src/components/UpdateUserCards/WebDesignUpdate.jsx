@@ -4,6 +4,7 @@ import { FiLogIn } from "react-icons/fi";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../Layout/Header";
 
+const API_URL = import.meta.env.VITE_API_URL;
 function WebDesignUpdate() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -15,7 +16,7 @@ function WebDesignUpdate() {
     const fetchWebDesign = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5005/web-design/${webDesignId}`
+          `${API_URL}/web-design/${webDesignId}`
         );
         const foundWebDesign = response.data.data; // Adjust this based on your API response structure
         console.log("found web design", foundWebDesign);
@@ -37,7 +38,7 @@ function WebDesignUpdate() {
 
     try {
       const response = await axios.put(
-        `http://localhost:5005/web-design/${webDesignId}`,
+        `${API_URL}/web-design/${webDesignId}`,
         updatedWebDesign
       );
       console.log(response.data);

@@ -5,6 +5,7 @@ import Header from "../Layout/Header";
 import { dotWave } from "ldrs";
 
 dotWave.register();
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function CollectiveFontCardDetails() {
   const { fontId } = useParams();
@@ -16,7 +17,7 @@ export default function CollectiveFontCardDetails() {
   }, []);
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:5005/font/${fontId}`);
+      const response = await axios.get(`${API_URL}/font/${fontId}`);
       setCollectiveFontDetail(response.data);
     } catch (error) {
       console.error("Error fetching collectiveFontDetail data:", error);
@@ -26,9 +27,7 @@ export default function CollectiveFontCardDetails() {
     const fetchWebDesign = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
-          `http://localhost:5005/font/${fontId}`
-        );
+        const response = await axios.get(`${API_URL}/font/${fontId}`);
         setTimeout(() => {
           setCollectiveFontDetail(response.data.data);
           setLoading(false);

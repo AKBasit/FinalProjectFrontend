@@ -5,6 +5,7 @@ import Header from "../Layout/Header";
 import { dotWave } from "ldrs";
 
 dotWave.register();
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function FontCardDetails() {
   const { fontId } = useParams();
@@ -18,7 +19,7 @@ export default function FontCardDetails() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:5005/font/${fontId}`);
+      const response = await axios.get(`${API_URL}/font/${fontId}`);
       setFontDetail(response.data);
     } catch (error) {
       console.error("Error fetching font detail data:", error);
@@ -36,7 +37,7 @@ export default function FontCardDetails() {
 
     try {
       const response = await axios.put(
-        "http://localhost:5005/font/shared/" + item._id,
+        `${API_URL}/font/shared/` + item._id,
         newFont
       );
       console.log(response);
@@ -51,9 +52,7 @@ export default function FontCardDetails() {
     const fetchFont = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
-          `http://localhost:5005/font/${fontId}`
-        );
+        const response = await axios.get(`${API_URL}/font/${fontId}`);
         setTimeout(() => {
           setFontDetail(response.data.data);
           setLoading(false);
@@ -66,22 +65,10 @@ export default function FontCardDetails() {
     fetchFont();
   }, [fontId]);
 
-  //   useEffect(() => {
-  //     if (fonts) {
-  //       const fontData = font.find((element) => {
-  //         if (element.id == fontId) {
-  //           return true;
-  //         }
-  //       });
-  //       console.log(fontData);
-  //       setfontDetail(fontData);
-  //     }
-  //   }, [fontId]);
-
   const handleDelete = async (id) => {
     try {
       //make an axios call to the back to delete the todo as well
-      const { data } = await axios.delete(`http://localhost:5005/font/${id}`);
+      const { data } = await axios.delete(`${API_URL}/font/${id}`);
       console.log("font was deleted ", data);
       navigate(-1);
     } catch (err) {

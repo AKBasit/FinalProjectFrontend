@@ -5,6 +5,7 @@ import Header from "../Layout/Header";
 import { dotWave } from "ldrs";
 
 dotWave.register();
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function CollectiveImageCardDetails() {
   const { imageId } = useParams();
@@ -16,9 +17,7 @@ export default function CollectiveImageCardDetails() {
   }, []);
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:5005/image/${imageId}`
-      );
+      const response = await axios.get(`${API_URL}/image/${imageId}`);
       setCollectiveImageDetail(response.data);
     } catch (error) {
       console.error("Error fetching collectiveImageDetail data:", error);
@@ -28,9 +27,7 @@ export default function CollectiveImageCardDetails() {
     const fetchWebDesign = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
-          `http://localhost:5005/image/${imageId}`
-        );
+        const response = await axios.get(`${API_URL}/image/${imageId}`);
         setTimeout(() => {
           setCollectiveImageDetail(response.data.data);
           setLoading(false);
