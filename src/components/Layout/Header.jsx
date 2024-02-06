@@ -1,7 +1,6 @@
 import { FiMenu, FiArrowUpRight } from "react-icons/fi";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useAnimate, motion } from "framer-motion";
-import evoke from "../../../public//Evoke.png";
 import { UserContext } from "../../contexts/UserContext";
 
 const Header = () => {
@@ -109,7 +108,6 @@ const Links = () => (
         href="/profile"
         className="relative z-10 text-gray/90 transition-colors group-hover:text-gray"
       >
-        {/* change a ref to WD */}
         Profile
       </a>
       <span className="absolute inset-0 z-0 bg-gradient-to-br from-gray/20 to-gray/5 opacity-0 transition-opacity group-hover:opacity-100" />
