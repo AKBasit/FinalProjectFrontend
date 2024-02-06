@@ -4,7 +4,7 @@ import axios from "axios";
 import evoke from "../../../public/Evoke.png";
 import { motion } from "framer-motion";
 
-const API_URL = "http://localhost:5005";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
 function Signup() {
   const [username, setUsername] = useState("");
