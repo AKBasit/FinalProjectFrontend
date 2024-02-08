@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../../contexts/UserContext";
 import evoke from "../../../public/Evoke.png";
-import { motion } from "framer-motion";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
@@ -85,20 +84,9 @@ function Login() {
             <button className="w-full mt-8  px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150">
               Log in
             </button>
-            {/* <motion.button
-              whileHover={{
-                scale: 1.01,
-              }}
-              whileTap={{
-                scale: 0.99,
-              }}
-              type="button"
-              className={
-                "w-full mt-4 px-4 py-2 text-white font-medium bg-violet-600 hover:bg-violet-500 active:bg-indigo-600 rounded-lg duration-150"
-              }
-            >
+            <button className="w-full mt-4 px-4 py-2 text-white font-medium bg-violet-600 hover:bg-violet-500 active:bg-indigo-600 rounded-lg duration-150">
               <link to="/">Home</link>
-            </motion.button> */}
+            </button>
           </form>
           {/* {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} */}
         </div>
