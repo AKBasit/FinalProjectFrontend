@@ -5,9 +5,11 @@ import { UserContext } from "../../contexts/UserContext";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const { isLoggedIn } = useContext(UserContext);
-
-  return <section>{isLoggedIn ? <GlassNavigation /> : null}</section>;
+  return (
+    <section>
+      <GlassNavigation />
+    </section>
+  );
 };
 
 const GlassNavigation = () => {
