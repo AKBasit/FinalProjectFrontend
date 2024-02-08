@@ -97,7 +97,7 @@ function Login() {
                 "w-full mt-4 px-4 py-2 text-white font-medium bg-violet-600 hover:bg-violet-500 active:bg-indigo-600 rounded-lg duration-150"
               }
             >
-              <a href="/">Home</a>
+              <link to="/">Home</link>
             </motion.button>
           </form>
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
