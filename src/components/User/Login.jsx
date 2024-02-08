@@ -20,7 +20,6 @@ function Login() {
 
   const handleLogin = (event) => {
     event.preventDefault();
-
     const requestBody = { email, password };
     axios
       .post(`${API_URL}/auth/login`, requestBody)
@@ -86,7 +85,7 @@ function Login() {
             <button className="w-full mt-8  px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150">
               Log in
             </button>
-            <motion.button
+            {/* <motion.button
               whileHover={{
                 scale: 1.01,
               }}
@@ -99,9 +98,9 @@ function Login() {
               }
             >
               <link to="/">Home</link>
-            </motion.button>
+            </motion.button> */}
           </form>
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+          {/* {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} */}
         </div>
       </div>
     </main>
