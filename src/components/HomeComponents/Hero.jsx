@@ -35,6 +35,7 @@ function Nav({ scrollYProgress }) {
 
   //NAVBAR
   const { isLoggedIn } = useContext(UserContext);
+  console.log("isLoggedIn:", isLoggedIn);
   return (
     <motion.nav
       style={{ background }}
