@@ -32,6 +32,7 @@ function Login() {
         });
       })
       .catch((error) => {
+        console.log("error", error);
         setErrorMessage(error.response.data.errorMessage);
       });
   };
