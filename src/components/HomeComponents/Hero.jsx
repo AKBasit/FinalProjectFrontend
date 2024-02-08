@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 
 function Hero() {
+  const { isLoggedIn } = useContext(UserContext);
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -14,7 +15,14 @@ function Hero() {
 
   return (
     <div>
-      <Nav scrollYProgress={scrollYProgress} />
+      {isLoggedIn ? (
+        <Nav scrollYProgress={scrollYProgress} />
+      ) : (
+        <div>
+          {/* Render non-logged-in content here */}
+          <h2>Welcome! Please log in to access more features.</h2>
+        </div>
+      )}
       <section ref={targetRef} className="bg-white h-[350vh]">
         <div className="h-screen sticky top-0 z-0 grid grid-cols-3 grid-rows-3 gap-4 p-4 overflow-hidden">
           <Copy scrollYProgress={scrollYProgress} />
@@ -35,7 +43,6 @@ function Nav({ scrollYProgress }) {
 
   //NAVBAR
   const { isLoggedIn } = useContext(UserContext);
-  console.log("isLoggedIn:", isLoggedIn);
   return (
     <motion.nav
       style={{ background }}
