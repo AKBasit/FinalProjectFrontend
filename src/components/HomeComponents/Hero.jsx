@@ -2,7 +2,6 @@ import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
 import outward from "../../../public/Outward.png";
 import mono from "../../../public/Mono.png";
-import evoke from "../../../public/Evoke.png";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";

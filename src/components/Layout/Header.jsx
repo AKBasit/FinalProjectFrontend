@@ -4,11 +4,9 @@ import { useAnimate, motion } from "framer-motion";
 import { UserContext } from "../../contexts/UserContext";
 
 const Header = () => {
-  return (
-    <section>
-      <GlassNavigation />
-    </section>
-  );
+  const { isLoggedIn } = useContext(UserContext);
+
+  return <section>{isLoggedIn ? <GlassNavigation /> : null}</section>;
 };
 
 const GlassNavigation = () => {
@@ -112,8 +110,6 @@ const Links = () => (
       </a>
       <span className="absolute inset-0 z-0 bg-gradient-to-br from-gray/20 to-gray/5 opacity-0 transition-opacity group-hover:opacity-100" />
     </button>
-    {/* <GlassLink text="History" /> */}
-    {/* <GlassLink text="Contact" /> */}
   </div>
 );
 

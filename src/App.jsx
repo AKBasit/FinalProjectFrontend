@@ -79,9 +79,11 @@ function App() {
         <Route
           path="/profile"
           element={
-            <Outlet>
-              <Profile />
-            </Outlet>
+            <IsPrivate>
+              <Outlet>
+                <Profile />
+              </Outlet>
+            </IsPrivate>
           }
         />
         <Route path="*" element={<NotFound />} />
