@@ -7,7 +7,6 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 
 function Hero() {
-  const { isLoggedIn } = useContext(UserContext);
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -15,14 +14,7 @@ function Hero() {
 
   return (
     <div>
-      {isLoggedIn ? (
-        <Nav scrollYProgress={scrollYProgress} />
-      ) : (
-        <div>
-          {/* Render non-logged-in content here */}
-          <h2>Welcome! Please log in to access more features.</h2>
-        </div>
-      )}
+      <Nav scrollYProgress={scrollYProgress} />
       <section ref={targetRef} className="bg-white h-[350vh]">
         <div className="h-screen sticky top-0 z-0 grid grid-cols-3 grid-rows-3 gap-4 p-4 overflow-hidden">
           <Copy scrollYProgress={scrollYProgress} />
@@ -43,27 +35,32 @@ function Nav({ scrollYProgress }) {
 
   //NAVBAR
   const { isLoggedIn } = useContext(UserContext);
-  return (
-    <motion.nav
-      style={{ background }}
-      className="px-4 py-2 flex items-center justify-between fixed top-0 left-0 right-0 z-40 transition-colors"
-    >
-      <div className="flex items-center gap-2 text-lg text-black">
-        <h1 className="text-5xl uppercase tracking-widest font-semibold">
-          Evoke
-        </h1>
-      </div>
-      {isLoggedIn ? (
-        <button className="relative scale-100 text-xl overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 from-40% to-indigo-400 px-4 py-2 font-semibold text-gray-100 transition-transform hover:scale-105 active:scale-95">
-          <a href="/profile">Profile</a>
-        </button>
-      ) : (
-        <button className="relative scale-100 text-xl overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 from-40% to-indigo-400 px-4 py-2 font-semibold text-gray-100 transition-transform hover:scale-105 active:scale-95">
-          <a href="/login">Log In</a>
-        </button>
-      )}
-    </motion.nav>
-  );
+  try {
+    return (
+      <motion.nav
+        style={{ background }}
+        className="px-4 py-2 flex items-center justify-between fixed top-0 left-0 right-0 z-40 transition-colors"
+      >
+        <div className="flex items-center gap-2 text-lg text-black">
+          <h1 className="text-5xl uppercase tracking-widest font-semibold">
+            Evoke
+          </h1>
+        </div>
+        {isLoggedIn ? (
+          <button className="relative scale-100 text-xl overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 from-40% to-indigo-400 px-4 py-2 font-semibold text-gray-100 transition-transform hover:scale-105 active:scale-95">
+            <a href="/profile">Profile</a>
+          </button>
+        ) : (
+          <button className="relative scale-100 text-xl overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 from-40% to-indigo-400 px-4 py-2 font-semibold text-gray-100 transition-transform hover:scale-105 active:scale-95">
+            <a href="/login">Log In</a>
+          </button>
+        )}
+      </motion.nav>
+    );
+  } catch (error) {
+    // Handle the error gracefully
+    console.error("An error occurred:", error);
+  }
 
   //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }
