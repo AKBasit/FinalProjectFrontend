@@ -48,7 +48,10 @@ export default function ImageList() {
         {images &&
           images.map((image) => {
             return (
-              <div key={image._id} className="w-full max-w-sm rounded-lg">
+              <div
+                key={image._id}
+                className="w-full max-w-sm rounded-lg overflow-hidden"
+              >
                 <Link to={`/image/${image._id}`}>
                   <img
                     src={image.imageUrl}
