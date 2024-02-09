@@ -33,8 +33,8 @@ export default function ProfileHeader() {
               Create Image
             </button>
           </Link>
-          <Link className="" to="/createFonts">
-            <button className="px-4 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-stone-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
+          <Link className="ml-6" to="/createFonts">
+            <button className="px-8 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-stone-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
               Create Font
             </button>
           </Link>
