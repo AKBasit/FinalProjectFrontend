@@ -40,9 +40,7 @@ export default function ImageList() {
   return (
     <div className="flex justify-center">
       <div className="flex flex-col items-center">
-        <h2 className="text-2xl transform -rotate-90 pt-28 mr-16 mr-12">
-          Images
-        </h2>
+        <h2 className="text-2xl transform -rotate-90 pt-28 mr-16">Images</h2>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {images &&
