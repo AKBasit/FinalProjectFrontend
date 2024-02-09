@@ -28,12 +28,12 @@ export default function ProfileHeader() {
               Create Web Design
             </button>
           </Link>
-          <Link className="mx-14" to="/createImages">
+          <Link className="mx-18" to="/createImages">
             <button className="px-8 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-stone-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
               Create Image
             </button>
           </Link>
-          <Link className="ml-6" to="/createFonts">
+          <Link className="ml-2" to="/createFonts">
             <button className="px-8 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-stone-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
               Create Font
             </button>
