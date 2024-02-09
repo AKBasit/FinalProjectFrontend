@@ -48,13 +48,13 @@ export default function ImageList() {
             return (
               <div
                 key={image._id}
-                className="w-full max-w-sm rounded-lg overflow-hidden"
+                className="w-full md:w-auto rounded-lg overflow-hidden"
               >
                 <Link to={`/image/${image._id}`}>
                   <img
                     src={image.imageUrl}
                     alt={image.name}
-                    className="w-full h-72 object-cover rounded-lg  hover:scale-105 active:scale-65 hover:brightness-75"
+                    className="w-full h-72 md:h-auto object-cover rounded-lg  hover:scale-105 active:scale-65 hover:brightness-75"
                   />
                 </Link>
               </div>
