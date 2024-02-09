@@ -29,7 +29,7 @@ export default function ImageList() {
   }, [user]);
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mx-6">
       <div className="flex-col items-center">
         <h2 className="text-2xl transform -rotate-90 pt-28 mr-16">Images</h2>
       </div>
