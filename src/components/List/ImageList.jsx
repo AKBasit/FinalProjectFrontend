@@ -28,33 +28,21 @@ export default function ImageList() {
     fetchData();
   }, [user]);
 
-  // const handleDone = (imageId) => {
-  //   const mappedimages = images.map((elem) => {
-  //     if (elem.id === imageId) {
-  //       elem.done = !elem.done;
-  //     }
-  //     return elem;
-  //   });
-  //   setimages(mappedimages);
-  // };
   return (
     <div className="flex justify-center">
-      <div className="flex flex-col items-center">
+      <div className="flex-col items-center">
         <h2 className="text-2xl transform -rotate-90 pt-28 mr-16">Images</h2>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {images &&
           images.map((image) => {
             return (
-              <div
-                key={image._id}
-                className="w-full max-w-sm rounded-lg overflow-hidden"
-              >
+              <div key={image._id} className="w-full max-w-sm rounded-lg">
                 <Link to={`/image/${image._id}`}>
                   <img
                     src={image.imageUrl}
                     alt={image.name}
-                    className="w-full h-64 object-cover rounded-lg hover:scale-105 active:scale-65 hover:brightness-75"
+                    className="w-full h-72 object-cover rounded-lg  hover:scale-105 active:scale-65 hover:brightness-75"
                   />
                 </Link>
               </div>
