@@ -40,7 +40,7 @@ export default function ImageList() {
   return (
     <div className="flex justify-center">
       <div className="flex flex-col items-center">
-        <h2 className="text-2xl transform -rotate-90 pt-28 mr-16 pr-12">
+        <h2 className="text-2xl transform -rotate-90 pt-28 mr-16 mr-12">
           Images
         </h2>
       </div>
@@ -56,7 +56,7 @@ export default function ImageList() {
                   <img
                     src={image.imageUrl}
                     alt={image.name}
-                    className="w-full h-72 object-cover rounded-lg hover:scale-105 active:scale-65 hover:brightness-75"
+                    className="w-full h-72 object-cover rounded-lg  hover:scale-105 active:scale-65 hover:brightness-75"
                   />
                 </Link>
               </div>
