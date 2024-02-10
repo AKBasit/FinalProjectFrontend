@@ -5,6 +5,7 @@ import Header from "../Layout/Header";
 import { dotWave } from "ldrs";
 
 dotWave.register();
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function CollectiveWebDesignCardDetails() {
   const { webDesignId } = useParams();
@@ -18,7 +19,7 @@ export default function CollectiveWebDesignCardDetails() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5005/web-design/${collectiveWebDesignDetail}`
+        `${API_URL}/web-design/${collectiveWebDesignDetail}`
       );
       setCollectiveWebDesignDetail(response.data);
     } catch (error) {
@@ -33,7 +34,7 @@ export default function CollectiveWebDesignCardDetails() {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:5005/web-design/${webDesignId}`
+          `${API_URL}/web-design/${webDesignId}`
         );
         setTimeout(() => {
           setCollectiveWebDesignDetail(response.data.data);

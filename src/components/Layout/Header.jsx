@@ -1,8 +1,8 @@
 import { FiMenu, FiArrowUpRight } from "react-icons/fi";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useAnimate, motion } from "framer-motion";
-import evoke from "../../../public//Evoke.png";
 import { UserContext } from "../../contexts/UserContext";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -105,40 +105,37 @@ const Links = () => (
   <div className="hidden items-center gap-10 md:flex">
     <GlassLink text="Home" />
     <button className="group relative font-semibold text-xl scale-100 overflow-hidden rounded-lg px-4 py-2 transition-transform hover:scale-105 active:scale-95">
-      <a
-        href="/profile"
+      <Link
+        to="/profile"
         className="relative z-10 text-gray/90 transition-colors group-hover:text-gray"
       >
-        {/* change a ref to WD */}
         Profile
-      </a>
+      </Link>
       <span className="absolute inset-0 z-0 bg-gradient-to-br from-gray/20 to-gray/5 opacity-0 transition-opacity group-hover:opacity-100" />
     </button>
-    {/* <GlassLink text="History" /> */}
-    {/* <GlassLink text="Contact" /> */}
   </div>
 );
 
 const GlassLink = ({ text }) => {
   return (
-    <a
-      href="/"
+    <Link
+      to="/"
       className="mx-auto group relative text-xl font-semibold scale-100 overflow-hidden rounded-lg px-4 py-2 transition-transform hover:scale-105 active:scale-95"
     >
       <span className="relative z-10 text-gray/90 transition-colors group-hover:text-gray">
         {text}
       </span>
       <span className="absolute inset-0 z-0 bg-gradient-to-br from-gray/20 to-gray/5 opacity-0 transition-opacity group-hover:opacity-100" />
-    </a>
+    </Link>
   );
 };
 
 const TextLink = ({ text }) => {
   return (
     <>
-      <a href="/" className="text-gray/90 transition-colors hover:text-gray">
+      <Link to="/" className="text-gray/90 transition-colors hover:text-gray">
         {text}
-      </a>
+      </Link>
     </>
   );
 };
@@ -161,50 +158,50 @@ const Buttons = ({ setMenuOpen }) => {
 
 const SignUpButton = () => {
   return (
-    <a
-      href="/"
+    <Link
+      to="/"
       className="group relative font-semibold text-xl scale-100 overflow-hidden rounded-lg px-4 py-2 transition-transform hover:scale-105 active:scale-95"
     >
       <span className="relative z-10 text-gray/90 transition-colors group-hover:text-gray">
         Home
       </span>
       <span className="absolute inset-0 z-0 bg-gradient-to-br from-gray/20 to-gray/5 opacity-0 transition-opacity group-hover:opacity-100" />
-    </a>
+    </Link>
   );
 };
 const DashboardButton = () => {
   return (
     <>
       <button className="group relative font-semibold text-xl scale-100 overflow-hidden rounded-lg px-4 py-2 transition-transform hover:scale-105 active:scale-95">
-        <a
-          href="/collectiveWebDesignLibrary"
+        <Link
+          to="/collectiveWebDesignLibrary"
           className="relative z-10 text-gray/90 transition-colors group-hover:text-gray"
         >
           {/* change a ref to WD */}
           Web Designs
-        </a>
+        </Link>
         <span className="absolute inset-0 z-0 bg-gradient-to-br from-gray/20 to-gray/5 opacity-0 transition-opacity group-hover:opacity-100" />
       </button>
 
       <button className="group relative font-semibold text-xl scale-100 overflow-hidden rounded-lg px-4 py-2 transition-transform hover:scale-105 active:scale-95">
-        <a
-          href="/collectiveImageLibrary"
+        <Link
+          to="/collectiveImageLibrary"
           className="relative z-10 text-gray/90 transition-colors group-hover:text-gray"
         >
           {/* change a ref to Image */}
           Images
-        </a>
+        </Link>
         <span className="absolute inset-0 z-0 bg-gradient-to-br from-gray/20 to-gray/5 opacity-0 transition-opacity group-hover:opacity-100" />
       </button>
 
       <button className="group relative font-semibold text-xl scale-100 overflow-hidden rounded-lg px-4 py-2 transition-transform hover:scale-105 active:scale-95">
-        <a
-          href="/collectiveFontLibrary"
+        <Link
+          to="/collectiveFontLibrary"
           className="relative z-10 text-gray/90 transition-colors group-hover:text-gray"
         >
           {/* change a ref to Font */}
           Fonts
-        </a>
+        </Link>
         <span className="absolute inset-0 z-0 bg-gradient-to-br from-gray/20 to-gray/5 opacity-0 transition-opacity group-hover:opacity-100" />
       </button>
     </>

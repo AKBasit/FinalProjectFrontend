@@ -1,10 +1,11 @@
 import Header from "../Layout/Header";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { dotWave } from "ldrs";
 
 dotWave.register();
+const API_URL = import.meta.env.VITE_API_URL;
 
 const CollectiveWebDesignLibrary = () => {
   const [loading, setLoading] = useState(true);
@@ -16,7 +17,7 @@ const CollectiveWebDesignLibrary = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:5005/web-design");
+      const response = await axios.get(`${API_URL}/web-design`);
       setTimeout(() => {
         setWebdesign(response.data);
         setLoading(false);

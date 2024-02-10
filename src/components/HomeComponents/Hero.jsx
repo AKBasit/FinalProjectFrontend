@@ -2,7 +2,6 @@ import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
 import outward from "../../../public/Outward.png";
 import mono from "../../../public/Mono.png";
-import evoke from "../../../public/Evoke.png";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
@@ -36,27 +35,32 @@ function Nav({ scrollYProgress }) {
 
   //NAVBAR
   const { isLoggedIn } = useContext(UserContext);
-  return (
-    <motion.nav
-      style={{ background }}
-      className="px-4 py-2 flex items-center justify-between fixed top-0 left-0 right-0 z-40 transition-colors"
-    >
-      <div className="flex items-center gap-2 text-lg text-black">
-        <h1 className="text-5xl uppercase tracking-widest font-semibold">
-          Evoke
-        </h1>
-      </div>
-      {isLoggedIn ? (
-        <button className="relative scale-100 text-xl overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 from-40% to-indigo-400 px-4 py-2 font-semibold text-gray-100 transition-transform hover:scale-105 active:scale-95">
-          <a href="/profile">Profile</a>
-        </button>
-      ) : (
-        <button className="relative scale-100 text-xl overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 from-40% to-indigo-400 px-4 py-2 font-semibold text-gray-100 transition-transform hover:scale-105 active:scale-95">
-          <a href="/login">Log In</a>
-        </button>
-      )}
-    </motion.nav>
-  );
+  try {
+    return (
+      <motion.nav
+        style={{ background }}
+        className="px-4 py-2 flex items-center justify-between fixed top-0 left-0 right-0 z-40 transition-colors"
+      >
+        <div className="flex items-center gap-2 text-lg text-black">
+          <h1 className="text-5xl uppercase tracking-widest font-semibold">
+            Evoke
+          </h1>
+        </div>
+        {isLoggedIn ? (
+          <button className="relative scale-100 text-xl overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 from-40% to-indigo-400 px-4 py-2 font-semibold text-gray-100 transition-transform hover:scale-105 active:scale-95">
+            <Link to="/profile">Profile</Link>
+          </button>
+        ) : (
+          <button className="relative scale-100 text-xl overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 from-40% to-indigo-400 px-4 py-2 font-semibold text-gray-100 transition-transform hover:scale-105 active:scale-95">
+            <Link to="/login">Log In</Link>
+          </button>
+        )}
+      </motion.nav>
+    );
+  } catch (error) {
+    // Handle the error gracefully
+    console.error("An error occurred:", error);
+  }
 
   //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 }

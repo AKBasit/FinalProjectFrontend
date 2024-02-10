@@ -20,7 +20,6 @@ function Login() {
 
   const handleLogin = (event) => {
     event.preventDefault();
-
     const requestBody = { email, password };
     axios
       .post(`${API_URL}/auth/login`, requestBody)
@@ -32,6 +31,7 @@ function Login() {
         });
       })
       .catch((error) => {
+        console.log("error", error);
         setErrorMessage(error.response.data.errorMessage);
       });
   };
@@ -97,10 +97,10 @@ function Login() {
                 "w-full mt-4 px-4 py-2 text-white font-medium bg-violet-600 hover:bg-violet-500 active:bg-indigo-600 rounded-lg duration-150"
               }
             >
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </motion.button>
           </form>
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+          {/* {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} */}
         </div>
       </div>
     </main>

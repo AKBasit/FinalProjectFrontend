@@ -1,7 +1,5 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { UserContext } from "../contexts/UserContext";
-// import axios from "axios";
 import service from "../../services/file-image-upload.service";
 import { hourglass } from "ldrs";
 import { FiLogIn } from "react-icons/fi";
@@ -61,37 +59,6 @@ export default function CreateImages() {
       console.error("Error while adding the new image: ", error);
     }
   };
-
-  // const handleCreateWebDesign = async (e) => {
-  //   e.preventDefault();
-  //   console.log("user in create func", user);
-  //   const webDesignCreate = {
-  //     name: name,
-  //     description: description,
-  //     imageUrl: image,
-  //     owner: user.id,
-  //   };
-  //   console.log(webDesignCreate);
-  //   const { data } = await axios.post(
-  //     "http://localhost:5005/web-design/",
-  //     webDesignCreate
-  //   );
-  //   console.log("web design successfully created", data);
-  //   navigate("/profile");
-  // };
-
-  // function convertToBase64(e) {
-  //   console.log(e);
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(e.target.files[0]);
-  //   reader.onload = () => {
-  //     console.log(reader.result);
-  //     setImage(reader.result);
-  //   };
-  //   reader.onerror = (error) => {
-  //     console.log("Error: ", error);
-  //   };
-  // }
 
   if (loading) {
     return (

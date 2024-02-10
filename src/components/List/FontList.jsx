@@ -35,7 +35,7 @@ export default function FontList() {
     <div className="flex justify-center">
       <div className="flex flex-col items-center">
         <h2 className="text-2xl transform -rotate-90 pt-28 mr-16 pb-16">
-          Font
+          Fonts
         </h2>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

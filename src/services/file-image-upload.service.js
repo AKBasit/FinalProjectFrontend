@@ -2,9 +2,11 @@
 
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const api = axios.create({
   // make sure you use PORT = 5005 (the port where our server is running)
-  baseURL: "http://localhost:5005/image",
+  baseURL: `${API_URL}/image`,
   // withCredentials: true // => you might need this option if using cookies and sessions
 });
 

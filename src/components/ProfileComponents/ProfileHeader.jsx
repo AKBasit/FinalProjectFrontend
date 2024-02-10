@@ -11,27 +11,6 @@ export default function ProfileHeader() {
   return (
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div className="max-w-screen-sm sm:text-center sm:mx-auto">
-        {/* <a
-          href="/"
-          aria-label="View"
-          className="inline-block mb-5 rounded-full sm:mx-auto"
-        >
-          <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-indigo-50">
-            <svg
-              className="w-12 h-12 text-deep-purple-accent-400"
-              stroke="currentColor"
-              viewBox="0 0 52 52"
-            >
-              <polygon
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-                points="29 13 14 29 25 29 23 39 38 23 27 23"
-              />
-            </svg>
-          </div>
-        </a> */}
         <h2 className="mb-4 mt-28 font-sans text-3xl font-bold tracking-tight text-stone-800 sm:text-4xl sm:leading-none">
           Welcome to your profile{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-tl from-red-700 via-violet-500 to-violet-600">
@@ -43,19 +22,19 @@ export default function ProfileHeader() {
           components for your creative endeavors right here:
         </p>
         <motion.div className="py-10 mx-auto flex">
-          <Link className="" to="/createWebdesigns">
+          <Link className="ml-2" to="/createWebdesigns">
             <button className="px-4 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-stone-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
               {" "}
               Create Web Design
             </button>
           </Link>
-          <Link className="mx-10" to="/createImages">
-            <button className="px-4 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-stone-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
+          <Link className="mx-16" to="/createImages">
+            <button className="px-8 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-stone-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
               Create Image
             </button>
           </Link>
-          <Link className="" to="/createFonts">
-            <button className="px-4 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-stone-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
+          <Link className="ml-1" to="/createFonts">
+            <button className="px-8 border-[1px] font-semibold text-lg border-indigo-600 rounded-lg bg-gradient-to-br from-gray/30 to-gray/5 py-2 text-stone-800 transition-transform hover:scale-105 active:scale-75 backdrop-blur">
               Create Font
             </button>
           </Link>

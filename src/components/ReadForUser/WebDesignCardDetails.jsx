@@ -5,6 +5,7 @@ import Header from "../Layout/Header";
 import { dotWave } from "ldrs";
 
 dotWave.register();
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function WebDesignCardDetails() {
   const { webDesignId } = useParams();
@@ -18,9 +19,7 @@ export default function WebDesignCardDetails() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:5005/web-design/${webDesignId}`
-      );
+      const response = await axios.get(`${API_URL}/web-design/${webDesignId}`);
       setWebDesignDetail(response.data);
     } catch (error) {
       console.error("Error fetching webDesignDetail data:", error);
@@ -38,7 +37,7 @@ export default function WebDesignCardDetails() {
 
     try {
       const response = await axios.put(
-        "http://localhost:5005/web-design/shared/" + item._id,
+        `${API_URL}/web-design/shared/` + item._id,
         newWebdesign
       );
       console.log(response);
@@ -54,7 +53,7 @@ export default function WebDesignCardDetails() {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:5005/web-design/${webDesignId}`
+          `${API_URL}/web-design/${webDesignId}`
         );
         // Simulate a 3-second loading delay
         setTimeout(() => {
@@ -70,24 +69,10 @@ export default function WebDesignCardDetails() {
     fetchWebDesign();
   }, [webDesignId]);
 
-  //   useEffect(() => {
-  //     if (webDesigns) {
-  //       const webDesignData = webDesign.find((element) => {
-  //         if (element.id == webDesignId) {
-  //           return true;
-  //         }
-  //       });
-  //       console.log(webDesignData);
-  //       setWebDesignDetail(webDesignData);
-  //     }
-  //   }, [webDesignId]);
-
   const handleDelete = async (id) => {
     try {
       //make an axios call to the back to delete the todo as well
-      const { data } = await axios.delete(
-        `http://localhost:5005/web-design/${id}`
-      );
+      const { data } = await axios.delete(`${API_URL}/web-design/${id}`);
       console.log("design was deleted ", data);
       navigate(-1);
     } catch (err) {

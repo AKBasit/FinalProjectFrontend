@@ -4,6 +4,8 @@ import { FiLogIn } from "react-icons/fi";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../Layout/Header";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function ImageUpdate() {
   const [name, setName] = useState("");
   const [contributor, setContributor] = useState("");
@@ -14,9 +16,7 @@ function ImageUpdate() {
   useEffect(() => {
     const fetchImage = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5005/image/${imageId}`
-        );
+        const response = await axios.get(`${API_URL}/image/${imageId}`);
         const foundImage = response.data.data; // Adjust this based on your API response structure
         console.log("found image", foundImage);
         setName(foundImage.name);
@@ -37,7 +37,7 @@ function ImageUpdate() {
 
     try {
       const response = await axios.put(
-        `http://localhost:5005/image/${imageId}`,
+        `${API_URL}/image/${imageId}`,
         updatedImage
       );
       console.log(response.data);
